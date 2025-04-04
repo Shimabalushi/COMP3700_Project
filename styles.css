@@ -52,6 +52,17 @@ body {
   margin-right: 15px;
 }
 
+.navbar-nav .nav-item {
+  white-space: nowrap; /* Ensures text doesn't break into multiple lines */
+}
+
+@media (max-width: 991px) {  /* Adjust breakpoint if needed */
+  .navbar-collapse {
+    background: rgba(103, 72, 47, 0.776); /* Dark background */
+    padding: 10px;
+    border-radius: 0 0 10px 10px; /* Rounded bottom */
+  }
+}
 .navbar-brand h1 {
   font-size: 2rem;
   font-weight: bold;
@@ -116,18 +127,21 @@ body {
 
 /* Main content - text and image */
 .top-section {
-  margin-top: 120px;
+  margin-top: 80px;
 }
 
 .top-section .row {
+  align-items: center; 
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10%;
 }
 
 .top-section img {
   max-width: 100%;
   height: auto;
   margin-right: 20px;
+  margin-bottom: 10%;
 }
 
 /* Footer overrides */
@@ -156,17 +170,4 @@ body {
 .divider-line {
   border-top: 2px solid #ccc;
   margin: 40px 0;
-}
-
-/* Four pictures in one row */
-.four-pics img {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  margin: 5%;
-}
-
-.four-pics img:hover {
-  transform: scale(1.1);
 }
