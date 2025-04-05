@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations - Explore Oman</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .header{background: url("img/destinations.jpg") no-repeat center center/cover ;}
+    /* Additional styling for destinations page */
+    .destination-title {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      .gov-table a {
+        color: #884a1f;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .gov-table a:hover {
+        color: #b3682b;
+        text-decoration: underline;
+      }
+   
+      .table-hover tbody tr:hover {
+        background-color: rgba(136, 74, 31, 0.1);
+      }
+
+      .governorate-section {
+        padding: 60px 0;
+        border-bottom: 1px solid #ccc;
+      }
+      
+      .gov-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .gov-img {
+        width: 400px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      
+      .gov-text {
+        max-width: 500px;
+      }
+      
+      
+  </style>
+</head>
+<body>
+  <!-- Header (reuse same header) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="Index.html">
+        <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
+        <span class="ms-2 fs-4 fw-bold text-white">Explore Oman</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="Index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
+            <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+            <li class="nav-item"><a class="nav-link" href="sign in.html">Sign In</a></li>
+            <li class="nav-item"><a class="nav-link" href="sign up.html">Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1 class="text-center mb-4 header" >Destinations</h1>
+  
+  <!-- Destinations Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Explore Oman's Governorates</h1>
+    
+    <!-- Governorates Table -->
+    <table class="table table-bordered table-hover gov-table text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Governorate</th>
+          <th>Main City</th>
+          <th>Known For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="#muscat">Muscat</a></td><td>Muscat</td><td>Modern meets tradition</td></tr>
+        <tr><td><a href="#dhofar">Dhofar</a></td><td>Salalah</td><td>Green mountains & Khareef season</td></tr>
+        <tr><td><a href="#musandam">Musandam</a></td><td>Khasab</td><td>Fjords & remote beauty</td></tr>
+        <tr><td><a href="#alburaimi">Al Buraimi</a></td><td>Al Buraimi</td><td>Historic forts & border markets</td></tr>
+        <tr><td><a href="#aldhahirah">Al Dhahirah</a></td><td>Ibri</td><td>Desert landscapes and history</td></tr>
+        <tr><td><a href="#sharqiyahnorth">North Al Sharqiyah</a></td><td>Ibra</td><td>Wadis & dunes</td></tr>
+        <tr><td><a href="#sharqiyahsouth">South Al Sharqiyah</a></td><td>Sur</td><td>Coastal charm & dhow building</td></tr>
+        <tr><td><a href="#aldakhiliyah">Al Dakhiliyah</a></td><td>Nizwa</td><td>Cultural heartland & forts</td></tr>
+        <tr><td><a href="#batinahnorth">North Al Batinah</a></td><td>Sohar</td><td>Ports & markets</td></tr>
+        <tr><td><a href="#batinahsouth">South Al Batinah</a></td><td>Rustaq</td><td>Hot springs & greenery</td></tr>
+        <tr><td><a href="#alwusta">Al Wusta</a></td><td>Haima</td><td>Untouched desert & wildlife</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Governorate Sections -->
+<section class="governorate-section">
+  <div class="gov-content">
+    <img src="img/muscat.jpg" alt="Muscat" class="gov-img">
+    <div class="gov-text">
+      <h3 id="muscat">Muscat</h3>
+      <p><strong>Main City:</strong> Muscat</p>
+      <p><strong>Known For:</strong> Grand Mosque, Muttrah Souq, sea port views</p>
+    </div>
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <div class="gov-text">
+      <h3 id="dhofar">Dhofar</h3>
+      <p><strong>Main City:</strong> Salalah</p>
+      <p><strong>Known For:</strong> Khareef season, coconut groves, green mountains</p>
+    </div>
+    <img src="img/salalah.jpg" alt="Dhofar" class="gov-img">
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <img src="img/musandam.jpg" alt="Musandam" class="gov-img">
+    <div class="gov-text">
+      <h3 id="musandam">Musandam</h3>
+      <p><strong>Main City:</strong> Khasab</p>
+      <p><strong>Known For:</strong> Fjords, dhow cruises, mountain villages</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <div class="gov-text">
+      <h3 id="alburaimi">Al Buraimi</h3>
+      <p><strong>Main City:</strong> Al Buraimi</p>
+      <p><strong>Known For:</strong> Border souqs, desert oasis, forts</p>
+    </div>
+    <img src="img/AlBuraimi.jpg" alt="Al Buraimi" class="gov-img">
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <img src="img/aldhahirah.jpg" alt="Al Dhahirah" class="gov-img">
+    <div class="gov-text">
+      <h3 id="aldhahirah">Al Dhahirah</h3>
+      <p><strong>Main City:</strong> Ibri</p>
+      <p><strong>Known For:</strong> Archaeological sites, hot springs</p>
+    </div>
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <div class="gov-text">
+      <h3 id="aldakhiliyah">Al Dakhiliyah</h3>
+      <p><strong>Main City:</strong> Nizwa</p>
+      <p><strong>Known For:</strong> Nizwa Fort, Jebel Akhdar, heritage</p>
+    </div>
+    <img src="img/flowers.jpg" alt="Al Dakhiliyah" class="gov-img">
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <img src="img/AlSharqiyahNorth.jpg" alt="Al Sharqiyah North" class="gov-img">
+    <div class="gov-text">
+      <h3 id="sharqiyahnorth">Al Sharqiyah North</h3>
+      <p><strong>Main City:</strong> Ibra</p>
+      <p><strong>Known For:</strong> Historical villages, women’s souq</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <div class="gov-text">
+      <h3 id="sharqiyahsouth">Al Sharqiyah South</h3>
+      <p><strong>Main City:</strong> Sur</p>
+      <p><strong>Known For:</strong> Dhow building, Ras al Jinz turtles</p>
+    </div>
+    <img src="img/AlSharqiyahSouth.jpg" alt="Al Sharqiyah South" class="gov-img">
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <img src="img/alwusta.jpg" alt="Al Wusta" class="gov-img">
+    <div class="gov-text">
+      <h3 id="alwusta">Al Wusta</h3>
+      <p><strong>Main City:</strong> Haima</p>
+      <p><strong>Known For:</strong> Deserts, Arabian Oryx Sanctuary</p>
+    </div>
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <div class="gov-text">
+      <h3 id="batinahnorth">Al Batinah North</h3>
+      <p><strong>Main City:</strong> Sohar</p>
+      <p><strong>Known For:</strong> Ports, beaches, Sohar Fort</p>
+    </div>
+    <img src="img/AlBatinahNorth.jpg" alt="Al Batinah North" class="gov-img">
+  </div>
+</section>
+
+<section class="governorate-section">
+  <div class="gov-content">
+    <img src="img/AlBatinahSouth.jpg" alt="Al Batinah South" class="gov-img">
+    <div class="gov-text">
+      <h3 id="batinahsouth">Al Batinah South</h3>
+      <p><strong>Main City:</strong> Rustaq</p>
+      <p><strong>Known For:</strong> Hot springs, Rustaq Fort, mountains</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer (reuse same footer) -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row d-flex justify-content-between align-items-center">
+        <div class="col-md-4">
+          <a href="contact.html">Contact Us</a>
+          <a href="about.html" class="ms-3">About Us</a>
+        </div>
+        <div class="col-md-4 text-md-end text-center">
+          <p class="m-0">📷 Instagram: @exploreoman</p>
+          <p class="m-0">📘 Facebook: Explore Oman</p>
+          <p class="m-0">🐦 Twitter/X: @explore_oman</p>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <p>© 2025 Explore Oman. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
