@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <style>
+  .header{
+    background: url("img/index2.jpg") no-repeat center center/cover ;
+    background-attachment: fixed;
+    font-size: 90px;
+  }
+
   h1, h3, h5 {
     color: rgb(139, 33, 7) ;
     margin-top: 40px;
@@ -17,11 +23,7 @@
   p{
     margin-bottom: 80px;
   }
-  .contact-page .navbar-nav .nav-link {color: black !important;}
-
-  .contact-page .navbar-nav .nav-link:hover {
-    color: rgb(139, 33, 7) !important; 
-  }
+ 
 </style>
 <body class="contact-page" style="background-color: f5f5f5;">
   <!-- Header -->
@@ -29,7 +31,7 @@
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="Index.html">
         <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
-        <span style="color: black;" class="ms-2 fs-4 fw-bold" >Explore Oman</span>
+        <span class="ms-2 fs-4 fw-bold text-white">Explore Oman</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
               data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
@@ -37,24 +39,35 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="Index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
-            <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
-            <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-            <li class="nav-item"><a class="nav-link" href="sign in.html">Sign In</a></li>
-            <li class="nav-item"><a class="nav-link" href="sign up.html">Sign Up</a></li>
-            <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-         </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="Index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
+          <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+          <li class="nav-item"><a class="nav-link" href="Transportation.html">Transportation</a></li>
+          <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
+          <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
+              <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
+              <li><a class="dropdown-item" href="Account.html">My Account</a></li>
+            </ul>
+          </li>
+       </ul>
       </div>
     </div>
   </nav>
 
-
+  <header class="header">
+    <div class="text-center">About Us</div>
+  </header>
   <!-- About Us Content -->
   <section class="container my-5">
-    <h1 class="text-center" style="margin-top: 200px; font-size: 50px; background-color: rgba(168, 168, 168, 0.217);">About Us</h1>
     <p class="text-center">Welcome to Explore Oman, your ultimate guide to discovering the breathtaking beauty, rich heritage, 
       and hidden gems of Oman. Whether you're an adventure seeker, a culture enthusiast, or a traveler looking for a peaceful retreat,
        we provide everything you need to make your journey unforgettable. 
