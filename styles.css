@@ -5,20 +5,21 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  background-attachment: fixed;
 }
 
 /* Header (background and positioning) */
 .header {
   position: relative;
   background-size: cover;
-  background-attachment: fixed; 
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: rgb(255, 255, 255); 
+  background-attachment: fixed;
 }
 
 .header h1 {
@@ -48,7 +49,7 @@ body {
 }
 
 .navbar-brand img {
-  width: 70px; /* Adjust this value for smaller or larger logo */
+  width: 70px;
   height: auto;
   margin-right: 15px;
 }
@@ -57,7 +58,7 @@ body {
   white-space: nowrap; /* Ensures text doesn't break into multiple lines */
 }
 
-@media (max-width: 991px) {  /* Adjust breakpoint if needed */
+@media (max-width: 991px) { 
   .navbar-collapse {
     background: rgba(103, 72, 47, 0.776); /* Dark background */
     padding: 10px;
