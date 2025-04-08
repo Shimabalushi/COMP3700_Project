@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Oman - International Flavours Dining</title>
+    <!-- Bootstrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        /* Header with background image */
+        .header {
+            background-image: url('img/fine_dining.jpg'); /* Replace with your image */
+        }
+
+        /* Transparent navbar */
+        .navbar {
+            top: -50px;
+        }
+
+
+        .section-heading {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .restaurant-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .restaurant-card img {
+            width: 80%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .restaurant-card h5 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .restaurant-card .rating {
+            font-size: 1.2rem;
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-card p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        
+        .container {
+            margin-top: 50px;
+        }
+
+        .restaurant-card .location {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .restaurant-card img {
+                width: 90%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="Index.html">
+            <img src="img/logo1.png" alt="Explore Oman Logo" width="50">
+            <span class="ms-2 fs-4 fw-bold text-white">Explore Oman</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+                  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link active" href="Index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
+              <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
+              <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+              <li class="nav-item"><a class="nav-link" href="Transportation.html">Transportation</a></li>
+              <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
+              <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                  <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
+                  <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
+                  <li><a class="dropdown-item" href="Account.html">My Account</a></li>
+                </ul>
+              </li>
+           </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="header d-flex align-items-center justify-content-center text-white">
+        <h1 class="display-1">International Flavours</h1>
+    </div>
+
+
+    <!-- Dining Section -->
+    <div class="container">
+        <div class="section-heading">Our Top International Flavours Restaurants</div>
+        <div class="row">
+            <!-- Restaurant Card 1 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-card">
+                    <img src="img/the clif.jpg" alt="The Backstage">
+                    <div class="restaurant-card-body">
+                        <h5>The Backstage</h5>
+                        <div class="rating">⭐ 9.0</div>
+                        <p class="location">📍 Muscat</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Restaurant Card 2 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-card">
+                    <img src="img/al khater.webp" alt="Al Khater">
+                    <div class="restaurant-card-body">
+                        <h5>Al Khater</h5>
+                        <div class="rating">⭐ 10</div>
+                        <p class="location">📍 Suhar</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Restaurant Card 3 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-card">
+                    <img src="img/tamarah.png" alt="Tamarah">
+                    <div class="restaurant-card-body">
+                        <h5>Tamarah</h5>
+                        <div class="rating">⭐ 9.0</div>
+                        <p class="location">📍 Nizwa - Muscat</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Restaurant Card 4 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-card">
+                    <img src="img/mosaic.png" alt="Mosaic">
+                    <div class="restaurant-card-body">
+                        <h5>Mosaic</h5>
+                        <div class="rating">⭐ 10</div>
+                        <p class="location">📍 Salalah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <!-- Footer Section -->
+<footer style="background-color: #d3af97;">
+    <div class="footer-container">
+        <table class="footer-table">
+            <tr>
+                <!-- Left Column -->
+                <td class="footer-left">
+                    <div class="logo-title">
+                        <img src="img/logo1.png" alt="Explore Oman Logo" width="80">
+                        <h3>Explore Oman</h3>
+                    </div>
+                    <h5 class="description" >
+                        Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.
+                    </h5>
+                    <h5>Follow Us :</h5>
+                    <p>📷 Instagram: @exploreoman</p>
+                    <p>📘 Facebook: Explore Oman</p>
+                    <p>🐦 Twitter/X: @explore_oman</p>
+                </td>
+
+                <!-- Right Column -->
+                <td class="footer-right">
+                    <div class="quick-access">
+                        <h5>Quick Access</h5>
+                        <table>
+                            <tr><td><a href="Index.html">Home</a></td></tr>
+                            <tr><td><a href="Destinations.html">Destinations</a></td></tr>
+                            <tr><td><a href="dining.html">Dining</a></td></tr>
+                            <tr><td><a href="Hotels and Accommodations.html">Hotels and Accommodations</a></td></tr>
+                            <tr><td><a href="Transportation.html">Transportation</a></td></tr>
+                            <tr><td><a href="Activities.html">Activities</a></td></tr>
+                            <tr><td><a href="ContactUs.html">Contact Us</a></td></tr>
+                            <tr><td><a href="AboutUs.html">About Us</a></td></tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="footer-bottom">
+            <p>© 2025 Explore Oman. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
