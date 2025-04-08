@@ -31,6 +31,10 @@ body {
   font-size: 1.5rem;
 }
 
+.logo {
+  height: 40px;
+}
+
 /* Transparent navbar */
 .navbar {
   padding: 10px 0;
