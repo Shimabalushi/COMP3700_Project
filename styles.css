@@ -154,20 +154,74 @@ body {
   width: 100%;
 }
 
-.footer a {
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #000;
-}
 
 .footer a:hover {
   text-decoration: underline;
 }
 
-.footer p {
-  font-size: 1rem;
-  color: #000;
+.footer {
+  background-color: #fbb191; /* Light brown */
+  color: rgb(0, 0, 0);
+  padding: 40px 0;
+}
+
+.footer-container {
+  width: 90%;
+  margin: auto;
+}
+
+.footer-table {
+  width: 100%;
+}
+
+.footer-left, .footer-right {
+  vertical-align: top;
+  padding: 20px;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -30px;
+}
+
+.footer-left h3 {
+  margin: 0;
+  color: white;
+}
+
+.footer-left .description {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  color: #4c0909;
+}
+
+
+
+
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right h5 {
+  color: #4c0909; /* Light beige or off-white for contrast */
+}
+
+.footer-right a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  color: rgb(0, 0, 0);
 }
 
 .divider-line {
