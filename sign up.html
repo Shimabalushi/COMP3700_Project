@@ -62,7 +62,7 @@
 
         /* Button Styling */
         .btn-custom {
-            background-color: #9e582a;
+            background-color: #d3af97;
             color: white;
             width: 100%;
             padding: 14px;
@@ -74,7 +74,7 @@
         }
 
         .btn-custom:hover {
-            background-color: #954f21;
+            background-color: #5e4a34;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
@@ -145,95 +145,100 @@
         <h1 class="display-1">Explore Oman - Sign Up </h1>
     </div>
 
-    <!-- Sign-Up Form -->
-    <div class="form-container">
-        <h2>Sign Up</h2>
-        <form action="https://httpbin.org/get" method="GET">
-            <!-- User Type and Gender (Side by Side) -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="userType" class="form-label">User Type :</label>
-                    <div class="d-flex justify-content-center"> <!-- Center the radio buttons -->
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="userType" id="customer" value="customer" required>
-                            <label class="form-check-label" for="customer">Customer</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="userType" id="businessOwner" value="businessOwner">
-                            <label class="form-check-label" for="businessOwner">Business Owner</label>
-                        </div>
+<!-- Sign-Up Form -->
+<div class="form-container">
+    <h2>Sign Up</h2>
+    <form action="https://httpbin.org/get" method="GET">
+        <!-- User Type and Gender -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">User Type :</label>
+                <div class="d-flex justify-content-center">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="userType" id="customer" value="customer" required title="Please select a user type">
+                        <label class="form-check-label" for="customer">Customer</label>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="gender" class="form-label">Gender :</label>
-                    <div class="d-flex justify-content-center"> <!-- Center the radio buttons -->
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-                            <label class="form-check-label" for="female">Female</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                            <label class="form-check-label" for="male">Male</label>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="userType" id="businessOwner" value="businessOwner">
+                        <label class="form-check-label" for="businessOwner">Business Owner</label>
                     </div>
                 </div>
             </div>
-
-            <!-- First Name and Last Name (Side by Side) -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" required>
-                </div>
-            </div>
-
-            <!-- Username and Birthday (Side by Side) -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="birthday" class="form-label">Birthday</label>
-                    <input type="date" id="birthday" name="birthday" class="form-control" required>
+            <div class="col-md-6">
+                <label class="form-label">Gender :</label>
+                <div class="d-flex justify-content-center">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female" required title="Please select your gender">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Email and Phone Number (Side by Side) -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" required>
-                </div>
+        <!-- First Name and Last Name -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required title="Please enter your first name">
             </div>
-
-            <!-- Password and Confirm Password (Side by Side) -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
-                </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required title="Please enter your last name">
             </div>
+        </div>
 
-            <!-- Submit Button -->
-            <div class="form-group">
-                <button type="submit" class="btn-custom">Sign Up</button>
+        <!-- Username and Birthday -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username" required title="Please choose a username">
             </div>
-        </form>
-    </div>
+            <div class="col-md-6">
+                <label for="birthday" class="form-label">Birthday</label>
+                <input type="date" id="birthday" name="birthday" class="form-control" placeholder="Select your birthday" required title="Please select your birth date">
+            </div>
+        </div>
 
+        <!-- Email and Phone Number -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control"
+                       placeholder="Enter your email" required
+                       title="Please enter a valid email address with '@'">
+            </div>
+            <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control"
+                       placeholder="Enter your phone number" pattern="[0-9]{8,15}" required
+                       title="Phone number must contain only digits (8 to 15 numbers)">
+            </div>
+        </div>
+
+        <!-- Password and Confirm Password -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required title="Please enter a password">
+            </div>
+            <div class="col-md-6">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Re-enter your password" required title="Please confirm your password">
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="btn-custom">Sign Up</button>
+        </div>
+    </form>
+</div>
+
+    
 <!-- Footer Section -->
 <footer style="background-color: #d3af97;">
     <div class="footer-container">
