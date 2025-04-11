@@ -7,6 +7,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"/>  
   <style>
+    .header{
+      background: url(img/index.jpg) no-repeat center center/cover ;
+    }
+
     .site-header {
       background: #fff;
       padding: 10px 20px;
@@ -19,7 +23,7 @@
     .profile-view,
     .edit-profile-page {
       padding: 30px;
-      background-color: #b4956b;
+      background-color: #ffff;
       color: #000;
     }
 
@@ -51,7 +55,7 @@
     .profile-editor {
       max-width: 500px;
       margin: auto;
-      background: #b4956b;
+      background: #ffff;
       padding: 20px;
       border-radius: 10px;
     }
@@ -113,11 +117,17 @@
           </div>
         </div>
       </nav>
+
+      <header class="header">
+        <h1>Edit information  </h1>
+    </header>
+
   <main class="edit-profile-page">
     <div class="profile-editor">
       <div class="edit-photo text-center">
+        <br/>
         <img src="img/Profile.jpg" class="avatar" /><br/>
-        <button class="btn-profile" type="button">Edit profile picture</button>
+        <button class="btn-profile" type="button">Edit profile picture</button><br/><br/>
       </div>
 
       <h2>Personal Information:</h2>
@@ -156,5 +166,51 @@
       </form>
     </div>
   </main>
+
+   <!-- Footer Section -->
+  <footer style="background-color: #d3af97;">
+    <div class="footer-container">
+        <table class="footer-table">
+            <tr>
+                <!-- Left Column -->
+                <td class="footer-left">
+                    <div class="logo-title">
+                        <img src="img/logo1.png" alt="Explore Oman Logo" width="80">
+                        <h3>Explore Oman</h3>
+                    </div>
+                    <h5 class="description" >
+                        Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.
+                    </h5>
+                    <h5>Follow Us :</h5>
+                    <p>📷 Instagram: @exploreoman</p>
+                    <p>📘 Facebook: Explore Oman</p>
+                    <p>🐦 Twitter/X: @explore_oman</p>
+                </td>
+
+                <!-- Right Column -->
+                <td class="footer-right">
+                    <div class="quick-access">
+                        <h5>Quick Access</h5>
+                        <table>
+                            <tr><td><a href="Index.html">Home</a></td></tr>
+                            <tr><td><a href="Destinations.html">Destinations</a></td></tr>
+                            <tr><td><a href="dining.html">Dining</a></td></tr>
+                            <tr><td><a href="Hotels and Accommodations.html">Hotels and Accommodations</a></td></tr>
+                            <tr><td><a href="Transportation.html">Transportation</a></td></tr>
+                            <tr><td><a href="Activities.html">Activities</a></td></tr>
+                            <tr><td><a href="ContactUs.html">Contact Us</a></td></tr>
+                            <tr><td><a href="AboutUs.html">About Us</a></td></tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="footer-bottom">
+            <p>© 2025 Explore Oman. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
 </body>
 </html>
