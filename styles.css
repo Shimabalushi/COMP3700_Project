@@ -1,6 +1,7 @@
-/* Body styles */
+* {font-family: 'Times New Roman', Times, serif;
+  box-sizing: border-box;}
+
 body {
-  font-family: 'Times New Roman', Times, serif;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
@@ -26,6 +27,7 @@ body {
   font-size: 3.5rem;
   font-weight: bold;
 }
+
 
 .header p {
   font-size: 1.5rem;
@@ -75,6 +77,7 @@ body {
   color: white;
 }
 
+
 /* Search box styling */
 .search-box {
   display: flex;
@@ -95,6 +98,7 @@ body {
   border: none !important;
   color: #000 !important;
 }
+
 
 /* Hover, Focus, and Active States */
 .btn:hover,
@@ -145,7 +149,6 @@ body {
   color: #000;
 }
 
-
 .logo-title {
   display: flex;
   align-items: center;
@@ -158,6 +161,8 @@ body {
   background-color: #d3af97;
   color: rgb(0, 0, 0);
   padding: 40px 0;
+  width: 100%;
+  margin: 0;
 }
 
 .footer a:hover {
@@ -165,8 +170,13 @@ body {
 }
 
 .footer-container {
-  width: 90%;
-  margin: auto;
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 0 20px; /* Ensures content doesn't touch screen edges */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer-table {
