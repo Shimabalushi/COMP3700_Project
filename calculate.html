@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oman Travel Budget Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="font-family: 'Times New Roman', serif;">
+
+  <!-- Navigation -->
+  <nav  id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
+        <span class="ms-2 fs-4 text-dark">Explore Oman</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation" id="navbarToggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
+          <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+          <li class="nav-item"><a class="nav-link" href="Transportation.html">Transportation</a></li>
+          <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
+          <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
+              <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
+              <li><a class="dropdown-item" href="Account.html">My Account</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header class="text-center text-white py-5 pt-7" style="background: url('img/index2.jpg') center center / cover fixed;">
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+      <h1 class="display-4 fw-bold mb-3 mt-5">Budget Calculator</h1>
+    </div>
+  </header>
+  
+  
+
+  <div class="container py-5">
+    <div class="card p-4 shadow-lg rounded-4">
+      <form id="calcForm">
+        <div class="row g-3">
+          <!-- Number of Days -->
+          <div class="col-md-6">
+            <label for="days" class="form-label">Number of Days</label>
+            <input type="number" id="days" class="form-control" min="1" required>
+          </div>
+
+          <!-- Number of Travelers -->
+          <div class="col-md-6">
+            <label for="travelers" class="form-label">Number of Travelers</label>
+            <input type="number" id="travelers" class="form-control" min="1" required>
+          </div>
+
+          <!-- Accommodation Type -->
+          <div class="col-md-6">
+            <label class="form-label">Accommodation Type</label>
+            <select id="accommodation" class="form-select" required>
+              <option value="budget">Budget (12 OMR/day)</option>
+              <option value="standard">Standard (25 OMR/day)</option>
+              <option value="luxury">Luxury (50 OMR/day)</option>
+            </select>
+          </div>
+
+          <!-- Transportation -->
+          <div class="col-md-6">
+            <label class="form-label">Transportation Option</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="transport" id="bus" value="bus" checked>
+              <label class="form-check-label" for="bus">Bus (3 OMR/person)</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="transport" id="taxi" value="taxi">
+              <label class="form-check-label" for="taxi">Taxi (15 OMR total)</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="transport" id="rental" value="rental">
+              <label class="form-check-label" for="rental">Rental Car (25 OMR total)</label>
+            </div>
+          </div>
+
+          <!-- Senior Discount -->
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="senior">
+              <label class="form-check-label" for="senior">
+                At least one traveler is a senior citizen (60+)? Apply 10% discount
+              </label>
+            </div>
+          </div>
+
+          <!-- Calculate Button -->
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-success px-4">Calculate</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Result Display -->
+      <div id="result" class="mt-4 text-center fs-5 fw-bold text-primary"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // This function handles the form submission and calculates the total cost
+    document.getElementById('calcForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form from refreshing the page
+
+      // Read form values
+      const days = parseInt(document.getElementById('days').value);
+      const travelers = parseInt(document.getElementById('travelers').value);
+      const accommodation = document.getElementById('accommodation').value;
+      const transport = document.querySelector('input[name="transport"]:checked').value;
+      const isSenior = document.getElementById('senior').checked;
+
+      // Assign daily rates in Omani Rials based on selected accommodation
+      let dailyRate = 0;
+      if (accommodation === 'budget') dailyRate = 12;
+      else if (accommodation === 'standard') dailyRate = 25;
+      else if (accommodation === 'luxury') dailyRate = 50;
+
+      // Calculate total accommodation cost
+      let baseCost = dailyRate * days * travelers;
+
+      // Calculate transportation cost
+      let transportCost = 0;
+      if (transport === 'bus') transportCost = travelers * 3;
+      else if (transport === 'taxi') transportCost = 15;
+      else if (transport === 'rental') transportCost = 25;
+
+      // Combine costs
+      let totalCost = baseCost + transportCost;
+
+      // Apply senior discount if checkbox is selected
+      if (isSenior) {
+        totalCost *= 0.9; // 10% discount
+      }
+
+      // Display result using Omani Rial currency format
+      document.getElementById('result').textContent =
+        `Estimated Total Cost: ${totalCost.toFixed(2)} OMR`;
+    });
+
+    const navbar = document.getElementById('navbar');
+    const navbarCollapse = document.getElementById('navbarNav');
+
+    navbarCollapse.addEventListener('show.bs.collapse', function () {
+    navbar.classList.remove('bg-transparent', 'navbar-dark');
+    navbar.classList.add('bg-light', 'navbar-light');
+    });
+
+    navbarCollapse.addEventListener('hide.bs.collapse', function () {
+    navbar.classList.remove('bg-dark', 'navbar-dark');
+    navbar.classList.add('bg-transparent', 'navbar-light');
+    });
+
+    // Hover effect: Apply hover styles for transparent navbar only
+    const navLinks = navbar.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('mouseover', function () {
+        if (navbar.classList.contains('bg-transparent')) {
+          link.style.transition = 'color 0.3s ease';
+          link.style.color = 'white'; // Change the color of the hovered link
+        }
+      });
+
+      link.addEventListener('mouseout', function () {
+        if (navbar.classList.contains('bg-transparent')) {
+          link.style.color = ''; // Reset the color back to default
+        }
+      });
+    });
+
+  </script>
+
+</body>
+</html>
