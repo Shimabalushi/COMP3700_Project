@@ -9,7 +9,7 @@
 <body style="font-family: 'Times New Roman', serif;">
 
   <!-- Navigation -->
-  <nav  id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
         <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
@@ -22,15 +22,41 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
-          <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
-          <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-          <li class="nav-item"><a class="nav-link" href="Transportation.html">Transportation</a></li>
-          <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
-          <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
-          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+  
+          <!-- Explore Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Explore
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+              <li><a class="dropdown-item" href="Destinations.html">Destinations</a></li>
+              <li><a class="dropdown-item" href="dining.html">Dining</a></li>
+              <li><a class="dropdown-item" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+              <li><a class="dropdown-item" href="Transportation.html">Transportation</a></li>
+              <li><a class="dropdown-item" href="Activities.html">Activities</a></li>
+            </ul>
+          </li>
+  
+          <!-- Tools -->
+          <li class="nav-item">
+            <a class="nav-link" href="calculate.html">Tools</a>
+          </li>
+  
+          <!-- Contact Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+              <li><a class="dropdown-item" href="ContactUs.html">Contact Us</a></li>
+              <li><a class="dropdown-item" href="AboutUS.html">About Us</a></li>
+            </ul>
+          </li>
+  
+          <!-- Account Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account
@@ -81,8 +107,9 @@
           event calendar, and direct booking system, it ensures a seamless travel experience. 
           Additionally, it supports local businesses and helps Omani locals explore hidden gems within their own country.
         </p>
-        <a class="btn text-white" style="background-color: #8b2107;" onmouseover="this.style.backgroundColor='#6e1a06';" 
-           onmouseout="this.style.backgroundColor='#8b2107';">Learn More</a>
+        <a class="btn btn-outline-dark">Learn More</a>
+
+
       </div>
   
       <!-- Photo Gallery (Carousel) -->
@@ -146,7 +173,7 @@
 
   <div id="spacer"></div>
   <!-- Footer -->
-  <footer class="mt-5">
+  <footer class="mt-5 bg-dark text-light">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -165,18 +192,18 @@
         <div class="col-md-4">
           <h5 class="mb-4">Quick Access</h5>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="index.html" class="text-decoration-none text-dark">Home</a></li>
-            <li class="mb-2"><a href="Destinations.html" class="text-decoration-none text-dark">Destinations</a></li>
-            <li class="mb-2"><a href="dining.html" class="text-decoration-none text-dark">Dining</a></li>
-            <li class="mb-2"><a href="Hotels and Accommodations.html" class="text-decoration-none text-dark">Hotels and Accommodations</a></li>
-            <li class="mb-2"><a href="Transportation.html" class="text-decoration-none text-dark">Transportation</a></li>
-            <li class="mb-2"><a href="Activities.html" class="text-decoration-none text-dark">Activities</a></li>
-            <li class="mb-2"><a href="ContactUs.html" class="text-decoration-none text-dark">Contact Us</a></li>
-            <li class="mb-2"><a href="AboutUs.html" class="text-decoration-none text-dark">About Us</a></li>
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-light">Home</a></li>
+            <li class="mb-2"><a href="Destinations.html" class="text-decoration-none text-light">Destinations</a></li>
+            <li class="mb-2"><a href="dining.html" class="text-decoration-none text-light">Dining</a></li>
+            <li class="mb-2"><a href="Hotels and Accommodations.html" class="text-decoration-none text-light">Hotels and Accommodations</a></li>
+            <li class="mb-2"><a href="Transportation.html" class="text-decoration-none text-light">Transportation</a></li>
+            <li class="mb-2"><a href="Activities.html" class="text-decoration-none text-light">Activities</a></li>
+            <li class="mb-2"><a href="ContactUs.html" class="text-decoration-none text-light">Contact Us</a></li>
+            <li class="mb-2"><a href="AboutUs.html" class="text-decoration-none text-light">About Us</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom pt-3 mt-3">
+      <div class="footer-bottom pt-3 mt-3 text-light">
         <p class="text-center mb-0">© 2025 Explore Oman. All rights reserved.</p>
       </div>
     </div>
