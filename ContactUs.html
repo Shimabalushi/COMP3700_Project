@@ -8,11 +8,11 @@
 </head>
 <body style="font-family: 'Times New Roman', serif;">
 <!-- Navigation -->
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-3">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
-      <span class="ms-2 fs-4 text-dark">Explore Oman</span>
+      <span class="ms-2 fs-4 text-light">Explore Oman</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
@@ -179,7 +179,7 @@
 
     navbarCollapse.addEventListener('hide.bs.collapse', function () {
     navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent');
+    navbar.classList.add('bg-transparent','navbar-dark' );
     });
 
     // Hover effect: Apply hover styles for transparent navbar only
