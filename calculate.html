@@ -9,7 +9,7 @@
 <body style="font-family: 'Times New Roman', serif;">
 
   <!-- Navigation -->
-  <nav  id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
         <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
@@ -22,15 +22,41 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
-          <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
-          <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-          <li class="nav-item"><a class="nav-link" href="Transportation.html">Transportation</a></li>
-          <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
-          <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
-          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+  
+          <!-- Explore Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Explore
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+              <li><a class="dropdown-item" href="Destinations.html">Destinations</a></li>
+              <li><a class="dropdown-item" href="dining.html">Dining</a></li>
+              <li><a class="dropdown-item" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+              <li><a class="dropdown-item" href="Transportation.html">Transportation</a></li>
+              <li><a class="dropdown-item" href="Activities.html">Activities</a></li>
+            </ul>
+          </li>
+  
+          <!-- Tools -->
+          <li class="nav-item">
+            <a class="nav-link" href="calculate.html">Tools</a>
+          </li>
+  
+          <!-- Contact Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+              <li><a class="dropdown-item" href="ContactUs.html">Contact Us</a></li>
+              <li><a class="dropdown-item" href="AboutUS.html">About Us</a></li>
+            </ul>
+          </li>
+  
+          <!-- Account Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account
@@ -45,6 +71,7 @@
       </div>
     </div>
   </nav>
+  
   <header class="text-center text-white py-5 pt-7" style="background: url('img/index2.jpg') center center / cover fixed;">
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
       <h1 class="display-4 fw-bold mb-3 mt-5">Budget Calculator</h1>
@@ -117,7 +144,43 @@
       <div id="result" class="mt-4 text-center fs-5 fw-bold text-primary"></div>
     </div>
   </div>
-
+  <div id="spacer"></div>
+  <!-- Footer -->
+  <footer class="mt-5 bg-dark text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="d-flex align-items-center mb-4">
+            <img src="img/logo1.png" alt="Explore Oman Logo" width="80" class="me-3">
+            <h3 class="mb-0">Explore Oman</h3>
+          </div>
+          <p class="mb-4">
+            Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.
+          </p>
+          <h5>Follow Us:</h5>
+          <p>📷 Instagram: @exploreoman</p>
+          <p>📘 Facebook: Explore Oman</p>
+          <p>🐦 Twitter/X: @explore_oman</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-4">Quick Access</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-light">Home</a></li>
+            <li class="mb-2"><a href="Destinations.html" class="text-decoration-none text-light">Destinations</a></li>
+            <li class="mb-2"><a href="dining.html" class="text-decoration-none text-light">Dining</a></li>
+            <li class="mb-2"><a href="Hotels and Accommodations.html" class="text-decoration-none text-light">Hotels and Accommodations</a></li>
+            <li class="mb-2"><a href="Transportation.html" class="text-decoration-none text-light">Transportation</a></li>
+            <li class="mb-2"><a href="Activities.html" class="text-decoration-none text-light">Activities</a></li>
+            <li class="mb-2"><a href="ContactUs.html" class="text-decoration-none text-light">Contact Us</a></li>
+            <li class="mb-2"><a href="AboutUs.html" class="text-decoration-none text-light">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom pt-3 mt-3 text-light">
+        <p class="text-center mb-0">© 2025 Explore Oman. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

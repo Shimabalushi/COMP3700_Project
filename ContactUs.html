@@ -5,139 +5,287 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Explore Oman</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .header{
-      background: url("img/index2.jpg") no-repeat center center/cover ;
-      background-attachment: fixed;
-    }
-
-    /* Additional Contact Us styles */
-    form .form-label { font-weight: bold; }
-    .contact-links a {
-      color: rgb(139, 33, 7);
-      font-weight: bold;
-      text-decoration: none;
-    }
-  
-    .contact-links a:hover {
-      color: black;
-      text-decoration: underline;
-    }
-  </style>
 </head>
-<body class="contact-page" style="background-color: f5f5f5;">
-  <!-- Header -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
-        <span class="ms-2 fs-4 fw-bold text-white">Explore Oman</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
-          <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
-          <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-          <li class="nav-item"><a class="nav-link" href="Transportation.html">Transportation</a></li>
-          <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
-          <li class="nav-item"><a class="nav-link active" href="ContactUs.html">Contact Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Account
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-              <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
-              <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
-              <li><a class="dropdown-item" href="Account.html">My Account</a></li>
-            </ul>
-          </li>
-       </ul>
-      </div>
-    </div>
-  </nav>
+<body style="font-family: 'Times New Roman', serif;">
+<!-- Navigation -->
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 z-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
+      <span class="ms-2 fs-4 text-dark">Explore Oman</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation" id="navbarToggler">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
 
-  <div class="header d-flex align-items-center justify-content-center text-white">
-    <h1 class="display-1" style="color: white;">Contact us</h1>
- </div>
+        <!-- Explore Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Explore
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+            <li><a class="dropdown-item" href="Destinations.html">Destinations</a></li>
+            <li><a class="dropdown-item" href="dining.html">Dining</a></li>
+            <li><a class="dropdown-item" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+            <li><a class="dropdown-item" href="Transportation.html">Transportation</a></li>
+            <li><a class="dropdown-item" href="Activities.html">Activities</a></li>
+          </ul>
+        </li>
 
-  <!-- Contact Form -->
-  <section class="container my-5">
-    <p class="text-center">Have questions? Fill out the form below and we'll get back to you.</p>
-    <form action="mailto:s141752@student.squ.edu.om" method="post" enctype="text/plain">
-      <div class="mb-3">
-        <label for="name" class="form-label">Your Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Your Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="subject" class="form-label">Subject</label>
-        <input type="text" class="form-control" id="subject" name="subject" required>
-      </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Send Message</button>
-    </form>
-  </section>
+        <!-- Tools -->
+        <li class="nav-item">
+          <a class="nav-link" href="calculate.html">Tools</a>
+        </li>
 
-  <div class="mt-5 contact-links" style="margin: 70px;">
-    <h5>Or reach us directly:</h5>
-    <p><strong>Email:</strong> <a href="mailto:s141752@student.squ.edu.om">info@exploreoman.com</a></p>
-    <p><strong>Phone:</strong> <a href="tel:+968 92962224">+968 92962224</a></p>
-  </div>
-  
-  <footer style="background-color: #d3af97;">
-  <div class="footer-container d-flex justify-content-between flex-wrap">
-    <!-- Left Column -->
-    <div class="footer-left" style="flex: 1 1 60%;">
-      <div class="logo-title d-flex align-items-center mb-2">
-        <img src="img/logo1.png" alt="Explore Oman Logo" width="80" class="me-2">
-        <h3>Explore Oman</h3>
-      </div>
-      <h5 class="description">
-        Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.
-      </h5>
-      <h5 class="mt-3">Follow Us :</h5>
-      <p>📷 Instagram: @exploreoman</p>
-      <p>📘 Facebook: Explore Oman</p>
-      <p>🐦 Twitter/X: @explore_oman</p>
-    </div>
+        <!-- Contact Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+            <li><a class="dropdown-item" href="ContactUs.html">Contact Us</a></li>
+            <li><a class="dropdown-item" href="AboutUS.html">About Us</a></li>
+          </ul>
+        </li>
 
-    <!-- Right Column -->
-    <div class="footer-right" style="flex: 1 1 30%;">
-      <h5>Quick Access</h5>
-      <ul class="list-unstyled">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="Destinations.html">Destinations</a></li>
-        <li><a href="dining.html">Dining</a></li>
-        <li><a href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-        <li><a href="Transportation.html">Transportation</a></li>
-        <li><a href="Activities.html">Activities</a></li>
-        <li><a href="ContactUs.html">Contact Us</a></li>
-        <li><a href="AboutUs.html">About Us</a></li>
+        <!-- Account Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+            <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
+            <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
+            <li><a class="dropdown-item" href="Account.html">My Account</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
+</nav>
 
-  <div class="footer-bottom text-center mt-3">
-    <p>© 2025 Explore Oman. All rights reserved.</p>
+<!-- Header -->
+<header class="text-center text-white py-5" style="background-image: url('img/index2.jpg'); background-size: cover; background-attachment: fixed; background-position: center;">
+  <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+    <h1 class="display-4 fw-bold">Contact Us</h1>
+  </div>
+</header>
+
+<!-- Contact Form Section -->
+<section class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <p class="text-center">Have questions? Fill out the form below and we'll get back to you.</p>
+      <form id="contactForm" class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="col-12">
+          <label for="subject" class="form-label">Subject</label>
+          <input type="text" class="form-control" id="subject" required>
+        </div>
+        <div class="col-12">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="4" required></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </div>
+      </form>
+      <div id="successAlert" class="alert alert-success d-none mt-4" role="alert">
+        Your message has been sent successfully! 🎉
+      </div>      
+    </div>
+  </div>
+</section>
+
+<!-- Messages Table Section (hidden at first) -->
+<section class="container my-5" id="messagesSection" style="display: none;">
+  <h2 class="text-center mb-4">Messages Received</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered" id="messagesTable">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<div id="spacer"></div>
+<!-- Footer -->
+<footer class="mt-5 bg-dark text-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="d-flex align-items-center mb-4">
+          <img src="img/logo1.png" alt="Explore Oman Logo" width="80" class="me-3">
+          <h3 class="mb-0">Explore Oman</h3>
+        </div>
+        <p class="mb-4">
+          Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.
+        </p>
+        <h5>Follow Us:</h5>
+        <p>📷 Instagram: @exploreoman</p>
+        <p>📘 Facebook: Explore Oman</p>
+        <p>🐦 Twitter/X: @explore_oman</p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="mb-4">Quick Access</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-decoration-none text-light">Home</a></li>
+          <li class="mb-2"><a href="Destinations.html" class="text-decoration-none text-light">Destinations</a></li>
+          <li class="mb-2"><a href="dining.html" class="text-decoration-none text-light">Dining</a></li>
+          <li class="mb-2"><a href="Hotels and Accommodations.html" class="text-decoration-none text-light">Hotels and Accommodations</a></li>
+          <li class="mb-2"><a href="Transportation.html" class="text-decoration-none text-light">Transportation</a></li>
+          <li class="mb-2"><a href="Activities.html" class="text-decoration-none text-light">Activities</a></li>
+          <li class="mb-2"><a href="ContactUs.html" class="text-decoration-none text-light">Contact Us</a></li>
+          <li class="mb-2"><a href="AboutUs.html" class="text-decoration-none text-light">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom pt-3 mt-3 text-light">
+      <p class="text-center mb-0">© 2025 Explore Oman. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
+<!-- JavaScript Section -->
+<script>
+  const navbar = document.getElementById('navbar');
+    const navbarCollapse = document.getElementById('navbarNav');
 
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    navbarCollapse.addEventListener('show.bs.collapse', function () {
+    navbar.classList.remove('bg-transparent', 'navbar-dark');
+    navbar.classList.add('bg-light', 'navbar-light');
+    });
+
+    navbarCollapse.addEventListener('hide.bs.collapse', function () {
+    navbar.classList.remove('bg-dark', 'navbar-dark');
+    navbar.classList.add('bg-transparent');
+    });
+
+    // Hover effect: Apply hover styles for transparent navbar only
+    const navLinks = navbar.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('mouseover', function () {
+        if (navbar.classList.contains('bg-transparent')) {
+          link.style.transition = 'color 0.3s ease';
+          link.style.color = 'white'; // Change the color of the hovered link
+        }
+      });
+
+      link.addEventListener('mouseout', function () {
+        if (navbar.classList.contains('bg-transparent')) {
+          link.style.color = ''; // Reset the color back to default
+        }
+      });
+    });
+
+// Constructor
+function ContactMessage(name, email, subject, message) {
+  this.name = name;
+  this.email = email;
+  this.subject = subject;
+  this.message = message;
+}
+
+// Array to store messages
+const contactMessages = [];
+
+// Update the table
+function updateMessagesTable() {
+  const tableBody = document.querySelector('#messagesTable tbody');
+  tableBody.innerHTML = "";
+
+  contactMessages.forEach(msg => {
+    tableBody.innerHTML += `<tr>
+      <td>${msg.name}</td>
+      <td>${msg.email}</td>
+      <td>${msg.subject}</td>
+      <td>${msg.message}</td>
+    </tr>`;
+  });
+
+  // Show the messages section
+  document.getElementById('messagesSection').style.display = 'block';
+}
+
+// Form Validation
+function validateForm(name, email, subject, message) {
+  if (name.length < 3) {
+    showError("Name must be at least 3 characters.");
+    return false;
+  }
+  if (!email.includes('@') || !email.includes('.')) {
+    showError("Please enter a valid email address.");
+    return false;
+  }
+  if (subject.length < 5) {
+    showError("Subject must be at least 5 characters.");
+    return false;
+  }
+  if (message.length < 10) {
+    showError("Message must be at least 10 characters.");
+    return false;
+  }
+  return true;
+}
+
+// Show error as a Bootstrap alert
+function showError(message) {
+  const alertDiv = document.getElementById('successAlert');
+  alertDiv.className = 'alert alert-danger mt-4'; // Make it red for errors
+  alertDiv.innerText = message;
+  alertDiv.classList.remove('d-none');
+}
+
+// Show success message
+function showSuccess(message) {
+  const alertDiv = document.getElementById('successAlert');
+  alertDiv.className = 'alert alert-success mt-4'; // Green for success
+  alertDiv.innerText = message;
+  alertDiv.classList.remove('d-none');
+}
+
+// Form Submit Event
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (validateForm(name, email, subject, message)) {
+    const newMessage = new ContactMessage(name, email, subject, message);
+    contactMessages.push(newMessage);
+    updateMessagesTable();
+    this.reset(); // Clear form after submit
+    showSuccess("Your message has been sent successfully! 🎉");
+  }
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
