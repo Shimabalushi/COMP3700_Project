@@ -217,107 +217,120 @@
   <div class="bg-light text-dark fixed-bottom overflow-hidden" style="height: 2.5rem;">
     <div id="scrolling-text" class="position-absolute" style="white-space: nowrap;"></div>
   </div>
-  
-  <script>
-    const navbar = document.getElementById('navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
+<script>
+  // Get references to the navbar and its collapse section
+const navbar = document.getElementById('navbar');
+const navbarCollapse = document.getElementById('navbarNav');
 
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-    navbar.classList.remove('bg-transparent', 'navbar-dark');
-    navbar.classList.add('bg-dark', 'navbar-dark');
-    });
+// When the navbar is expanded (mobile view)
+navbarCollapse.addEventListener('show.bs.collapse', function () {
+  // Remove transparency and apply dark background
+  navbar.classList.remove('bg-transparent', 'navbar-dark');
+  navbar.classList.add('bg-dark', 'navbar-dark');
+});
 
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-    navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent', 'navbar-dark');
-    });
+// When the navbar is collapsed
+navbarCollapse.addEventListener('hide.bs.collapse', function () {
+  // Reapply transparency for better visibility over background
+  navbar.classList.remove('bg-dark', 'navbar-dark');
+  navbar.classList.add('bg-transparent', 'navbar-dark');
+});
 
-    // Hover effect: Apply hover styles for transparent navbar only
-    const navLinks = navbar.querySelectorAll('.nav-link');
+// Apply hover effects on navigation links only when navbar is transparent
+const navLinks = navbar.querySelectorAll('.nav-link');
 
-    navLinks.forEach(link => {
-      link.addEventListener('mouseover', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.transition = 'color 0.3s ease';
-          link.style.color = 'white'; // Change the color of the hovered link
-        }
-      });
-
-      link.addEventListener('mouseout', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.color = ''; // Reset the color back to default
-        }
-      });
-    });
-
-    // Scrolling banner 
-    const companyName = "Explore Oman";
-    const now = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dateStr = now.toLocaleDateString(undefined, options);
-    const timeStr = now.toLocaleTimeString();
-    const message = `Welcome to the ${companyName} website! Today is ${dateStr}, and the time is ${timeStr}`;
-  
-    const banner = document.getElementById("scrolling-text");
-    banner.innerText = message;
-  
-    let position = window.innerWidth;
-    function scrollText() {
-      position--;
-      banner.style.left = position + "px";
-      if (position + banner.offsetWidth < 0) {
-        position = window.innerWidth;
-      }
-      requestAnimationFrame(scrollText);
+navLinks.forEach(link => {
+  link.addEventListener('mouseover', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.transition = 'color 0.3s ease'; // Smooth color transition
+      link.style.color = 'white'; // Change link color to white on hover
     }
-    scrollText();
+  });
 
-    const searchInput = document.querySelector('input[placeholder="Search..."]');
+  link.addEventListener('mouseout', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.color = ''; // Reset link color when not hovering
+    }
+  });
+});
 
-    searchInput.addEventListener('keypress', function (event) {
-      if (event.key === 'Enter') { // When user presses Enter
-        event.preventDefault();
-        const query = searchInput.value.trim().toLowerCase();
-  
-        // A simple list of keywords and their corresponding pages
-        const pages = {
-          'home': 'index.html',
-          'destinations': 'Destinations.html',
-          'dining': 'dining.html',
-          'hotels': 'Hotels and Accommodations.html',
-          'accommodations': 'Hotels and Accommodations.html',
-          'transportation': 'Transportation.html',
-          'activities': 'Activities.html',
-          'contact': 'ContactUs.html',
-          'contact us': 'ContactUs.html',
-          'about': 'AboutUs.html',
-          'about us': 'AboutUs.html',
-          'sign in': 'sign in.html',
-          'sign up': 'sign up.html',
-          'account': 'Account.html',
-          'calculate': 'calculate.html'
-        };
-  
-        // Find the matching page
-        if (pages[query]) {
-          window.location.href = pages[query];
-        } else {
-          alert('Page not found! Please try keywords like "Destinations", "Dining", "Activities", etc.');
-        }
-      }
-    });
+// SCROLLING BANNER SECTION
+// Create a welcome message with current date and time
+const companyName = "Explore Oman";
+const now = new Date(); // Get current date and time
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const dateStr = now.toLocaleDateString(undefined, options); // Format date
+const timeStr = now.toLocaleTimeString(); // Format time
+const message = `Welcome to the ${companyName} website! Today is ${dateStr}, and the time is ${timeStr}`;
 
-    // Footer content arrays
-var logoSrc = "img/logo1.png";
-var title = "Explore Oman";
+// Target the banner container
+const banner = document.getElementById("scrolling-text");
+banner.innerText = message;
+
+// Start scrolling the banner from right to left
+let position = window.innerWidth; // Start from full window width
+function scrollText() {
+  position--; // Move left by 1 pixel
+  banner.style.left = position + "px"; // Update banner position
+  if (position + banner.offsetWidth < 0) {
+    position = window.innerWidth; // Reset position once text goes off screen
+  }
+  requestAnimationFrame(scrollText); // Continue the animation smoothly
+}
+scrollText(); // Initialize scrolling
+
+// SEARCH BAR IN HEADER SECTION
+const searchInput = document.querySelector('input[placeholder="Search..."]');
+
+// When the user presses "Enter" inside the search bar
+searchInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent form submission
+
+    const query = searchInput.value.trim().toLowerCase(); // Get and clean user input
+
+    // A dictionary of keywords mapped to their corresponding page URLs
+    const pages = {
+      'home': 'index.html',
+      'destinations': 'Destinations.html',
+      'dining': 'dining.html',
+      'hotels': 'Hotels and Accommodations.html',
+      'accommodations': 'Hotels and Accommodations.html',
+      'transportation': 'Transportation.html',
+      'activities': 'Activities.html',
+      'contact': 'ContactUs.html',
+      'contact us': 'ContactUs.html',
+      'about': 'AboutUs.html',
+      'about us': 'AboutUs.html',
+      'sign in': 'sign in.html',
+      'sign up': 'sign up.html',
+      'account': 'Account.html',
+      'calculate': 'calculate.html'
+    };
+
+    // Redirect if a matching page is found
+    if (pages[query]) {
+      window.location.href = pages[query];
+    } else {
+      // Otherwise, show an error message
+      alert('Page not found! Please try keywords like "Destinations", "Dining", "Activities", etc.');
+    }
+  }
+});
+
+// FOOTER SECTION: Define content for footer
+var logoSrc = "img/logo1.png"; // Logo image source
+var title = "Explore Oman"; // Website title
 var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
 
+// Define social media links
 var socialLinks = [
   { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
   { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
   { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
 ];
 
+// Define quick navigation links
 var quickLinks = [
   { text: "Home", href: "index.html" },
   { text: "Destinations", href: "Destinations.html" },
@@ -330,11 +343,11 @@ var quickLinks = [
   { text: "Account", href: "account.html" }
 ];
 
-// Function to generate the footer
+// Function to dynamically generate footer content
 function generateFooterContent() {
-  var footer = document.getElementById("footerContent");
+  var footer = document.getElementById("footerContent"); // Target footer container
 
-  // Left section (Logo, description, social)
+  // Left section with logo, description, and social links
   var leftSection = `
     <div class="col-md-8 mb-4 text-start">
       <div class="d-flex align-items-center mb-3">
@@ -342,7 +355,6 @@ function generateFooterContent() {
         <h4 class="mb-0">${title}</h4>
       </div>
       <p>${description}</p>
-
       <p class="mt-4 mb-2"><strong>Follow Us:</strong></p>
       <ul class="list-unstyled">
         ${socialLinks.map(link => `<li><a href="${link.href}" class="text-light" target="_blank">${link.icon} ${link.platform}: ${link.username}</a></li>`).join('')}
@@ -350,7 +362,7 @@ function generateFooterContent() {
     </div>
   `;
 
-  // Right section (Quick Access - aligned perfectly)
+  // Right section with quick access links
   var rightSection = `
     <div class="col-md-4 mb-4 text-start">
       <h5><strong>Quick Access</strong></h5>
@@ -360,6 +372,7 @@ function generateFooterContent() {
     </div>
   `;
 
+  // Add both sections into the footer
   footer.innerHTML = `
     <div class="row">
       ${leftSection}
@@ -368,41 +381,40 @@ function generateFooterContent() {
   `;
 }
 
-
-
-// Search function
+// FOOTER SEARCH FUNCTION
 function searchFooter() {
-  var input = document.getElementById("searchInput").value.toLowerCase();
-  var listItems = document.getElementById("footerList").getElementsByTagName("li");
+  var input = document.getElementById("searchInput").value.toLowerCase(); // Get user input
+  var listItems = document.getElementById("footerList").getElementsByTagName("li"); // Get all quick links
   var found = false;
 
-  // Reset highlights
+  // Clear any previous highlights
   for (var i = 0; i < listItems.length; i++) {
     listItems[i].style.backgroundColor = "";
     listItems[i].style.color = "";
   }
 
-  // Search
+  // Search through quick links
   for (var i = 0; i < listItems.length; i++) {
     var li = listItems[i];
     var text = li.textContent.toLowerCase();
     if (text.includes(input) && input !== "") {
+      // Highlight the matching link
       li.style.backgroundColor = "#2e00e6";
       li.style.color = "#fff";
-      li.scrollIntoView({ behavior: "smooth", block: "center" });
+      li.scrollIntoView({ behavior: "smooth", block: "center" }); // Smooth scroll to the link
       found = true;
     }
   }
 
+  // If no match found, alert the user
   if (!found && input !== "") {
     alert("No matching page found. Try again!");
   }
 }
 
-// Call the footer generation on page load
+// Call the footer content generation function once page loads
 generateFooterContent();
-  </script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</script>  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

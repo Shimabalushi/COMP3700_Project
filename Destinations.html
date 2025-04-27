@@ -94,6 +94,10 @@
 <main class="container my-5 pt-5">
   <h2 class="text-center mb-5">Explore Oman's Governorates</h2>
 
+  <div class="mb-4 text-center">
+    <input type="text" id="tableSearchInput" class="form-control w-50 mx-auto" placeholder="Search Governorates..." onkeyup="filterTable()">
+  </div>
+  
   <!-- Table -->
   <div class="table-responsive mb-5">
     <table class="table table-bordered table-hover text-center align-middle">
@@ -153,38 +157,39 @@
 
 <!-- Scroll behavior and navbar animation -->
 <script>
+  // Navbar background changes when toggling collapse (mobile view)
   const navbar = document.getElementById('navbar');
   const navbarCollapse = document.getElementById('navbarNav');
 
   navbarCollapse.addEventListener('show.bs.collapse', function () {
-  navbar.classList.remove('bg-transparent', 'navbar-dark');
-  navbar.classList.add('bg-dark', 'navbar-dark');
+    navbar.classList.remove('bg-transparent', 'navbar-dark');
+    navbar.classList.add('bg-dark', 'navbar-dark');
   });
 
   navbarCollapse.addEventListener('hide.bs.collapse', function () {
-  navbar.classList.remove('bg-dark', 'navbar-dark');
-  navbar.classList.add('bg-transparent', 'navbar-dark');
+    navbar.classList.remove('bg-dark', 'navbar-dark');
+    navbar.classList.add('bg-transparent', 'navbar-dark');
   });
 
+  // Hover effect on nav links (only when navbar is transparent)
+  const navLinks = navbar.querySelectorAll('.nav-link');
 
-    // Hover effect: Apply hover styles for transparent navbar only
-    const navLinks = navbar.querySelectorAll('.nav-link');
-
-    navLinks.forEach(link => {
-      link.addEventListener('mouseover', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.transition = 'color 0.3s ease';
-          link.style.color = 'white'; // Change the color of the hovered link
-        }
-      });
-
-      link.addEventListener('mouseout', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.color = ''; // Reset the color back to default
-        }
-      });
+  navLinks.forEach(link => {
+    link.addEventListener('mouseover', function () {
+      if (navbar.classList.contains('bg-transparent')) {
+        link.style.transition = 'color 0.3s ease';
+        link.style.color = 'white'; // Change color on hover
+      }
     });
 
+    link.addEventListener('mouseout', function () {
+      if (navbar.classList.contains('bg-transparent')) {
+        link.style.color = ''; // Reset color when not hovering
+      }
+    });
+  });
+
+  // Change navbar style when scrolling
   window.addEventListener('scroll', function () {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
@@ -194,222 +199,258 @@
     }
   });
 
-  const governorates = [
-  {
-    id: "muscat",
-    image: "img/muscat.jpg",
-    alt: "Muscat",
-    name: "Muscat",
-    city: "Muscat",
-    knownFor: "Grand Mosque, Muttrah Souq, sea port views.",
-    reverse: false
-  },
-  {
-    id: "dhofar",
-    image: "img/salalah.jpg",
-    alt: "Dhofar",
-    name: "Dhofar",
-    city: "Salalah",
-    knownFor: "Khareef season, coconut groves, green mountains.",
-    reverse: true
-  },
-  {
-    id: "musandam",
-    image: "img/musandam.jpg",
-    alt: "Musandam",
-    name: "Musandam",
-    city: "Khasab",
-    knownFor: "Fjords, dhow cruises, mountain villages.",
-    reverse: false
-  },
-  {
-    id: "alburaimi",
-    image: "img/AlBuraimi.jpg",
-    alt: "Al Buraimi",
-    name: "Al Buraimi",
-    city: "Al Buraimi",
-    knownFor: "Historic forts, border souqs, desert oasis.",
-    reverse: true
-  },
-  {
-    id: "aldhahirah",
-    image: "img/AlDhahirah.jpg",
-    alt: "Al Dhahirah",
-    name: "Al Dhahirah",
-    city: "Ibri",
-    knownFor: "Forts, archaeological sites, desert landscapes.",
-    reverse: false
-  },
-  {
-    id: "sharqiyahnorth",
-    image: "img/AlSharqiyahNorth.jpg",
-    alt: "North Al Sharqiyah",
-    name: "North Al Sharqiyah",
-    city: "Ibra",
-    knownFor: "Wahiba Sands desert, traditional souqs.",
-    reverse: true
-  },
-  {
-    id: "sharqiyahsouth",
-    image: "img/AlSharqiyahSouth.jpg",
-    alt: "South Al Sharqiyah",
-    name: "South Al Sharqiyah",
-    city: "Sur",
-    knownFor: "Dhow building, Ras Al Jinz turtle reserve.",
-    reverse: false
-  },
-  {
-    id: "aldakhiliyah",
-    image: "img/flowers.jpg",
-    alt: "Al Dakhiliyah",
-    name: "Al Dakhiliyah",
-    city: "Nizwa",
-    knownFor: "Nizwa Fort, traditional culture, Jebel Akhdar.",
-    reverse: true
-  },
-  {
-    id: "batinahnorth",
-    image: "img/AlBatinahNorth.jpg",
-    alt: "North Al Batinah",
-    name: "North Al Batinah",
-    city: "Sohar",
-    knownFor: "Ports, ancient copper industries, markets.",
-    reverse: false
-  },
-  {
-    id: "batinahsouth",
-    image: "img/AlBatinahSouth.jpg",
-    alt: "South Al Batinah",
-    name: "South Al Batinah",
-    city: "Rustaq",
-    knownFor: "Hot springs, Rustaq Fort, green valleys.",
-    reverse: true
-  },
-  {
-    id: "alwusta",
-    image: "img/alwusta.jpg",
-    alt: "Al Wusta",
-    name: "Al Wusta",
-    city: "Haima",
-    knownFor: "Remote deserts, Arabian Oryx sanctuary.",
-    reverse: false
+  function filterTable() {
+    // Get the input element and its current value, convert to lowercase for case-insensitive matching
+    var input = document.getElementById("tableSearchInput");
+    var filter = input.value.toLowerCase();
+  
+    // Get the table element and all its rows
+    var table = document.querySelector(".table");
+    var tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows (skip the first row if it is the table header)
+    for (var i = 1; i < tr.length; i++) {
+      // Get all cells (td) in the current row
+      var tds = tr[i].getElementsByTagName("td");
+      var showRow = false; // Assume we hide the row unless a match is found
+  
+      // Loop through each cell in the row
+      for (var j = 0; j < tds.length; j++) {
+        var td = tds[j];
+        if (td) {
+          // Check if the cell text includes the search keyword
+          if (td.innerText.toLowerCase().indexOf(filter) > -1) {
+            showRow = true; // Found a match in this cell, so show the row
+            break; // No need to check other cells in the same row
+          }
+        }
+      }
+  
+      // Based on showRow flag, display or hide the row
+      tr[i].style.display = showRow ? "" : "none";
+    }
   }
-];
+  // Governorates data (for generating sections dynamically)
+  const governorates = [
+    // Each governorate object contains its details
+    {
+      id: "muscat",
+      image: "img/muscat.jpg",
+      alt: "Muscat",
+      name: "Muscat",
+      city: "Muscat",
+      knownFor: "Grand Mosque, Muttrah Souq, sea port views.",
+      reverse: false
+    },
+    {
+      id: "dhofar",
+      image: "img/salalah.jpg",
+      alt: "Dhofar",
+      name: "Dhofar",
+      city: "Salalah",
+      knownFor: "Khareef season, coconut groves, green mountains.",
+      reverse: true
+    },
+    {
+      id: "musandam",
+      image: "img/musandam.jpg",
+      alt: "Musandam",
+      name: "Musandam",
+      city: "Khasab",
+      knownFor: "Fjords, dhow cruises, mountain villages.",
+      reverse: false
+    },
+    {
+      id: "alburaimi",
+      image: "img/AlBuraimi.jpg",
+      alt: "Al Buraimi",
+      name: "Al Buraimi",
+      city: "Al Buraimi",
+      knownFor: "Historic forts, border souqs, desert oasis.",
+      reverse: true
+    },
+    {
+      id: "aldhahirah",
+      image: "img/AlDhahirah.jpg",
+      alt: "Al Dhahirah",
+      name: "Al Dhahirah",
+      city: "Ibri",
+      knownFor: "Forts, archaeological sites, desert landscapes.",
+      reverse: false
+    },
+    {
+      id: "sharqiyahnorth",
+      image: "img/AlSharqiyahNorth.jpg",
+      alt: "North Al Sharqiyah",
+      name: "North Al Sharqiyah",
+      city: "Ibra",
+      knownFor: "Wahiba Sands desert, traditional souqs.",
+      reverse: true
+    },
+    {
+      id: "sharqiyahsouth",
+      image: "img/AlSharqiyahSouth.jpg",
+      alt: "South Al Sharqiyah",
+      name: "South Al Sharqiyah",
+      city: "Sur",
+      knownFor: "Dhow building, Ras Al Jinz turtle reserve.",
+      reverse: false
+    },
+    {
+      id: "aldakhiliyah",
+      image: "img/flowers.jpg",
+      alt: "Al Dakhiliyah",
+      name: "Al Dakhiliyah",
+      city: "Nizwa",
+      knownFor: "Nizwa Fort, traditional culture, Jebel Akhdar.",
+      reverse: true
+    },
+    {
+      id: "batinahnorth",
+      image: "img/AlBatinahNorth.jpg",
+      alt: "North Al Batinah",
+      name: "North Al Batinah",
+      city: "Sohar",
+      knownFor: "Ports, ancient copper industries, markets.",
+      reverse: false
+    },
+    {
+      id: "batinahsouth",
+      image: "img/AlBatinahSouth.jpg",
+      alt: "South Al Batinah",
+      name: "South Al Batinah",
+      city: "Rustaq",
+      knownFor: "Hot springs, Rustaq Fort, green valleys.",
+      reverse: true
+    },
+    {
+      id: "alwusta",
+      image: "img/alwusta.jpg",
+      alt: "Al Wusta",
+      name: "Al Wusta",
+      city: "Haima",
+      knownFor: "Remote deserts, Arabian Oryx sanctuary.",
+      reverse: false
+    }
+  ];
 
-function generateGovernorates() {
-  const container = document.getElementById('governorates');
-  container.innerHTML = governorates.map(gov => `
-    <div id="${gov.id}" class="row justify-content-center align-items-center g-5 ${gov.reverse ? 'flex-md-row-reverse' : ''} mb-5">
-      <div class="col-md-5 text-center">
-        <div class="ratio ratio-4x3" style="max-width: 400px; margin: auto;">
-          <img src="${gov.image}" alt="${gov.alt}" class="img-fluid rounded shadow w-100 h-100 object-fit-cover" />
+  // Dynamically generate Governorates sections
+  function generateGovernorates() {
+    const container = document.getElementById('governorates');
+    container.innerHTML = governorates.map(gov => `
+      <div id="${gov.id}" class="row justify-content-center align-items-center g-5 ${gov.reverse ? 'flex-md-row-reverse' : ''} mb-5">
+        <div class="col-md-5 text-center">
+          <div class="ratio ratio-4x3" style="max-width: 400px; margin: auto;">
+            <img src="${gov.image}" alt="${gov.alt}" class="img-fluid rounded shadow w-100 h-100 object-fit-cover" />
+          </div>
+        </div>
+        <div class="col-md-5 d-flex flex-column justify-content-center text-center text-md-start">
+          <h3 class="fw-bold">${gov.name}</h3>
+          <p><strong>Main City:</strong> ${gov.city}</p>
+          <p><strong>Known For:</strong> ${gov.knownFor}</p>
         </div>
       </div>
-      <div class="col-md-5 d-flex flex-column justify-content-center text-center text-md-start">
-        <h3 class="fw-bold">${gov.name}</h3>
-        <p><strong>Main City:</strong> ${gov.city}</p>
-        <p><strong>Known For:</strong> ${gov.knownFor}</p>
-      </div>
-    </div>
-  `).join('');
-}
-
-generateGovernorates();
-
-  // Footer content arrays
-var logoSrc = "img/logo1.png";
-var title = "Explore Oman";
-var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
-
-var socialLinks = [
-  { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
-  { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
-  { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
-];
-
-var quickLinks = [
-  { text: "Home", href: "index.html" },
-  { text: "Destinations", href: "Destinations.html" },
-  { text: "Dining", href: "dining.html" },
-  { text: "Hotels and Accommodations", href: "Hotels and Accommodations.html" },
-  { text: "Transportation", href: "Transportation.html" },
-  { text: "Activities", href: "Activities.html" },
-  { text: "Contact Us", href: "ContactUs.html" },
-  { text: "About Us", href: "About.html" },
-  { text: "Account", href: "account.html" }
-];
-
-// Function to generate the footer
-function generateFooterContent() {
-  var footer = document.getElementById("footerContent");
-
-  // Left section (Logo, description, social)
-  var leftSection = `
-    <div class="col-md-8 mb-4 text-start">
-      <div class="d-flex align-items-center mb-3">
-        <img src="${logoSrc}" alt="Explore Oman Logo" width="50" class="me-3">
-        <h4 class="mb-0">${title}</h4>
-      </div>
-      <p>${description}</p>
-
-      <p class="mt-4 mb-2"><strong>Follow Us:</strong></p>
-      <ul class="list-unstyled">
-        ${socialLinks.map(link => `<li><a href="${link.href}" class="text-light" target="_blank">${link.icon} ${link.platform}: ${link.username}</a></li>`).join('')}
-      </ul>
-    </div>
-  `;
-
-  // Right section (Quick Access - aligned perfectly)
-  var rightSection = `
-    <div class="col-md-4 mb-4 text-start">
-      <h5><strong>Quick Access</strong></h5>
-      <ul class="list-unstyled" id="footerList">
-        ${quickLinks.map(link => `<li><a href="${link.href}" class="text-light" style="text-decoration: none;">${link.text}</a></li>`).join('')}
-      </ul>
-    </div>
-  `;
-
-  footer.innerHTML = `
-    <div class="row">
-      ${leftSection}
-      ${rightSection}
-    </div>
-  `;
-}
-
-
-
-// Search function
-function searchFooter() {
-  var input = document.getElementById("searchInput").value.toLowerCase();
-  var listItems = document.getElementById("footerList").getElementsByTagName("li");
-  var found = false;
-
-  // Reset highlights
-  for (var i = 0; i < listItems.length; i++) {
-    listItems[i].style.backgroundColor = "";
-    listItems[i].style.color = "";
+    `).join('');
   }
 
-  // Search
-  for (var i = 0; i < listItems.length; i++) {
-    var li = listItems[i];
-    var text = li.textContent.toLowerCase();
-    if (text.includes(input) && input !== "") {
-      li.style.backgroundColor = "#2e00e6";
-      li.style.color = "#fff";
-      li.scrollIntoView({ behavior: "smooth", block: "center" });
-      found = true;
+  // Call the function to build governorate sections when page loads
+  generateGovernorates();
+
+  // Footer content variables (logo, description, social links, quick links)
+  var logoSrc = "img/logo1.png";
+  var title = "Explore Oman";
+  var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
+
+  var socialLinks = [
+    { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
+    { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
+    { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
+  ];
+
+  var quickLinks = [
+    { text: "Home", href: "index.html" },
+    { text: "Destinations", href: "Destinations.html" },
+    { text: "Dining", href: "dining.html" },
+    { text: "Hotels and Accommodations", href: "Hotels and Accommodations.html" },
+    { text: "Transportation", href: "Transportation.html" },
+    { text: "Activities", href: "Activities.html" },
+    { text: "Contact Us", href: "ContactUs.html" },
+    { text: "About Us", href: "About.html" },
+    { text: "Account", href: "account.html" }
+  ];
+
+  // Function to dynamically generate footer content
+  function generateFooterContent() {
+    var footer = document.getElementById("footerContent");
+
+    // Left section: Logo, description, and social links
+    var leftSection = `
+      <div class="col-md-8 mb-4 text-start">
+        <div class="d-flex align-items-center mb-3">
+          <img src="${logoSrc}" alt="Explore Oman Logo" width="50" class="me-3">
+          <h4 class="mb-0">${title}</h4>
+        </div>
+        <p>${description}</p>
+
+        <p class="mt-4 mb-2"><strong>Follow Us:</strong></p>
+        <ul class="list-unstyled">
+          ${socialLinks.map(link => `<li><a href="${link.href}" class="text-light" target="_blank">${link.icon} ${link.platform}: ${link.username}</a></li>`).join('')}
+        </ul>
+      </div>
+    `;
+
+    // Right section: Quick access links
+    var rightSection = `
+      <div class="col-md-4 mb-4 text-start">
+        <h5><strong>Quick Access</strong></h5>
+        <ul class="list-unstyled" id="footerList">
+          ${quickLinks.map(link => `<li><a href="${link.href}" class="text-light" style="text-decoration: none;">${link.text}</a></li>`).join('')}
+        </ul>
+      </div>
+    `;
+
+    // Combine and insert into the footer
+    footer.innerHTML = `
+      <div class="row">
+        ${leftSection}
+        ${rightSection}
+      </div>
+    `;
+  }
+
+  // Function for the search input in the footer
+  function searchFooter() {
+    var input = document.getElementById("searchInput").value.toLowerCase();
+    var listItems = document.getElementById("footerList").getElementsByTagName("li");
+    var found = false;
+
+    // Reset previous highlights
+    for (var i = 0; i < listItems.length; i++) {
+      listItems[i].style.backgroundColor = "";
+      listItems[i].style.color = "";
+    }
+
+    // Search through the quick links
+    for (var i = 0; i < listItems.length; i++) {
+      var li = listItems[i];
+      var text = li.textContent.toLowerCase();
+      if (text.includes(input) && input !== "") {
+        // Highlight matching link
+        li.style.backgroundColor = "#2e00e6";
+        li.style.color = "#fff";
+        li.scrollIntoView({ behavior: "smooth", block: "center" });
+        found = true;
+      }
+    }
+
+    // Alert if no match found
+    if (!found && input !== "") {
+      alert("No matching page found. Try again!");
     }
   }
 
-  if (!found && input !== "") {
-    alert("No matching page found. Try again!");
-  }
-}
-
-// Call the footer generation on page load
-generateFooterContent();
+  // Generate footer content on page load
+  generateFooterContent();
 </script>
 
 </body>

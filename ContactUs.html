@@ -163,39 +163,40 @@
 
 <!-- JavaScript Section -->
 <script>
-  const navbar = document.getElementById('navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
+  // Get navbar elements
+const navbar = document.getElementById('navbar');
+const navbarCollapse = document.getElementById('navbarNav');
 
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-    navbar.classList.remove('bg-transparent', 'navbar-dark');
-    navbar.classList.add('bg-dark', 'navbar-dark');
-    });
+// Change navbar background when toggler is clicked (expand/collapse)
+navbarCollapse.addEventListener('show.bs.collapse', function () {
+  navbar.classList.remove('bg-transparent', 'navbar-dark');
+  navbar.classList.add('bg-dark', 'navbar-dark');
+});
 
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-    navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent', 'navbar-dark');
-    });
+navbarCollapse.addEventListener('hide.bs.collapse', function () {
+  navbar.classList.remove('bg-dark', 'navbar-dark');
+  navbar.classList.add('bg-transparent', 'navbar-dark');
+});
 
+// Add hover effect for navbar links when navbar is transparent
+const navLinks = navbar.querySelectorAll('.nav-link');
 
-    // Hover effect: Apply hover styles for transparent navbar only
-    const navLinks = navbar.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+  link.addEventListener('mouseover', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.transition = 'color 0.3s ease';
+      link.style.color = 'white'; // Change color on hover
+    }
+  });
 
-    navLinks.forEach(link => {
-      link.addEventListener('mouseover', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.transition = 'color 0.3s ease';
-          link.style.color = 'white'; // Change the color of the hovered link
-        }
-      });
+  link.addEventListener('mouseout', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.color = ''; // Reset color after hover
+    }
+  });
+});
 
-      link.addEventListener('mouseout', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.color = ''; // Reset the color back to default
-        }
-      });
-    });
-
-// Constructor
+// Constructor for Contact Messages
 function ContactMessage(name, email, subject, message) {
   this.name = name;
   this.email = email;
@@ -203,14 +204,15 @@ function ContactMessage(name, email, subject, message) {
   this.message = message;
 }
 
-// Array to store messages
+// Array to store contact form messages
 const contactMessages = [];
 
-// Update the table
+// Update and display the Messages table
 function updateMessagesTable() {
   const tableBody = document.querySelector('#messagesTable tbody');
-  tableBody.innerHTML = "";
+  tableBody.innerHTML = ""; // Clear existing content
 
+  // Loop through each message and add a row
   contactMessages.forEach(msg => {
     tableBody.innerHTML += `<tr>
       <td>${msg.name}</td>
@@ -220,11 +222,11 @@ function updateMessagesTable() {
     </tr>`;
   });
 
-  // Show the messages section
+  // Make the messages section visible
   document.getElementById('messagesSection').style.display = 'block';
 }
 
-// Form Validation
+// Validate contact form input
 function validateForm(name, email, subject, message) {
   if (name.length < 3) {
     showError("Name must be at least 3 characters.");
@@ -245,51 +247,55 @@ function validateForm(name, email, subject, message) {
   return true;
 }
 
-// Show error as a Bootstrap alert
+// Display an error message (red alert)
 function showError(message) {
   const alertDiv = document.getElementById('successAlert');
-  alertDiv.className = 'alert alert-danger mt-4'; // Make it red for errors
+  alertDiv.className = 'alert alert-danger mt-4'; // Red for error
   alertDiv.innerText = message;
-  alertDiv.classList.remove('d-none');
+  alertDiv.classList.remove('d-none'); // Show alert
 }
 
-// Show success message
+// Display a success message (green alert)
 function showSuccess(message) {
   const alertDiv = document.getElementById('successAlert');
   alertDiv.className = 'alert alert-success mt-4'; // Green for success
   alertDiv.innerText = message;
-  alertDiv.classList.remove('d-none');
+  alertDiv.classList.remove('d-none'); // Show alert
 }
 
-// Form Submit Event
+// Handle form submission event
 document.getElementById('contactForm').addEventListener('submit', function(event) {
-  event.preventDefault();
+  event.preventDefault(); // Prevent form default submission
 
+  // Get form values
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const subject = document.getElementById('subject').value.trim();
   const message = document.getElementById('message').value.trim();
 
+  // Validate inputs
   if (validateForm(name, email, subject, message)) {
     const newMessage = new ContactMessage(name, email, subject, message);
-    contactMessages.push(newMessage);
-    updateMessagesTable();
-    this.reset(); // Clear form after submit
+    contactMessages.push(newMessage); // Save the message
+    updateMessagesTable(); // Update table with new message
+    this.reset(); // Reset form fields
     showSuccess("Your message has been sent successfully! 🎉");
   }
 });
 
 // Footer content arrays
-var logoSrc = "img/logo1.png";
-var title = "Explore Oman";
-var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
+var logoSrc = "img/logo1.png"; // Logo image
+var title = "Explore Oman"; // Website title
+var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable."; // Short about
 
+// Social media links
 var socialLinks = [
   { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
   { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
   { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
 ];
 
+// Quick links for footer
 var quickLinks = [
   { text: "Home", href: "index.html" },
   { text: "Destinations", href: "Destinations.html" },
@@ -298,15 +304,15 @@ var quickLinks = [
   { text: "Transportation", href: "Transportation.html" },
   { text: "Activities", href: "Activities.html" },
   { text: "Contact Us", href: "ContactUs.html" },
-  { text: "About Us", href: "About.html" },
+  { text: "About Us", href: "AboutUs.html" },
   { text: "Account", href: "account.html" }
 ];
 
-// Function to generate the footer
+// Generate dynamic footer content
 function generateFooterContent() {
   var footer = document.getElementById("footerContent");
 
-  // Left section (Logo, description, social)
+  // Left Section (Logo + Description + Social Links)
   var leftSection = `
     <div class="col-md-8 mb-4 text-start">
       <div class="d-flex align-items-center mb-3">
@@ -322,7 +328,7 @@ function generateFooterContent() {
     </div>
   `;
 
-  // Right section (Quick Access - aligned perfectly)
+  // Right Section (Quick Links)
   var rightSection = `
     <div class="col-md-4 mb-4 text-start">
       <h5><strong>Quick Access</strong></h5>
@@ -332,6 +338,7 @@ function generateFooterContent() {
     </div>
   `;
 
+  // Insert into footer
   footer.innerHTML = `
     <div class="row">
       ${leftSection}
@@ -340,39 +347,39 @@ function generateFooterContent() {
   `;
 }
 
-
-
-// Search function
+// Footer Search function
 function searchFooter() {
   var input = document.getElementById("searchInput").value.toLowerCase();
   var listItems = document.getElementById("footerList").getElementsByTagName("li");
   var found = false;
 
-  // Reset highlights
+  // Reset any previous highlights
   for (var i = 0; i < listItems.length; i++) {
     listItems[i].style.backgroundColor = "";
     listItems[i].style.color = "";
   }
 
-  // Search
+  // Search and highlight matching result
   for (var i = 0; i < listItems.length; i++) {
     var li = listItems[i];
     var text = li.textContent.toLowerCase();
     if (text.includes(input) && input !== "") {
-      li.style.backgroundColor = "#2e00e6";
+      li.style.backgroundColor = "#2e00e6"; // Highlight
       li.style.color = "#fff";
       li.scrollIntoView({ behavior: "smooth", block: "center" });
       found = true;
     }
   }
 
+  // Alert if no match found
   if (!found && input !== "") {
     alert("No matching page found. Try again!");
   }
 }
 
-// Call the footer generation on page load
+// Generate footer when page loads
 generateFooterContent();
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

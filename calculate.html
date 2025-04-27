@@ -177,89 +177,95 @@
 </footer>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // This function handles the form submission and calculates the total cost
+document.getElementById('calcForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent form from refreshing the page on submit
 
-  <script>
-    // This function handles the form submission and calculates the total cost
-    document.getElementById('calcForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent form from refreshing the page
+  // Read form input values
+  const days = parseInt(document.getElementById('days').value);
+  const travelers = parseInt(document.getElementById('travelers').value);
+  const accommodation = document.getElementById('accommodation').value;
+  const transport = document.querySelector('input[name="transport"]:checked').value;
+  const isSenior = document.getElementById('senior').checked;
 
-      // Read form values
-      const days = parseInt(document.getElementById('days').value);
-      const travelers = parseInt(document.getElementById('travelers').value);
-      const accommodation = document.getElementById('accommodation').value;
-      const transport = document.querySelector('input[name="transport"]:checked').value;
-      const isSenior = document.getElementById('senior').checked;
+  // Assign daily rates in Omani Rials based on selected accommodation type
+  let dailyRate = 0;
+  if (accommodation === 'budget') dailyRate = 12;
+  else if (accommodation === 'standard') dailyRate = 25;
+  else if (accommodation === 'luxury') dailyRate = 50;
 
-      // Assign daily rates in Omani Rials based on selected accommodation
-      let dailyRate = 0;
-      if (accommodation === 'budget') dailyRate = 12;
-      else if (accommodation === 'standard') dailyRate = 25;
-      else if (accommodation === 'luxury') dailyRate = 50;
+  // Calculate total accommodation cost
+  let baseCost = dailyRate * days * travelers;
 
-      // Calculate total accommodation cost
-      let baseCost = dailyRate * days * travelers;
+  // Calculate transportation cost based on selected option
+  let transportCost = 0;
+  if (transport === 'bus') transportCost = travelers * 3;
+  else if (transport === 'taxi') transportCost = 15;
+  else if (transport === 'rental') transportCost = 25;
 
-      // Calculate transportation cost
-      let transportCost = 0;
-      if (transport === 'bus') transportCost = travelers * 3;
-      else if (transport === 'taxi') transportCost = 15;
-      else if (transport === 'rental') transportCost = 25;
+  // Combine accommodation and transportation costs
+  let totalCost = baseCost + transportCost;
 
-      // Combine costs
-      let totalCost = baseCost + transportCost;
+  // Apply a 10% discount if a senior citizen is among the travelers
+  if (isSenior) {
+    totalCost *= 0.9; // Reduce total cost by 10%
+  }
 
-      // Apply senior discount if checkbox is selected
-      if (isSenior) {
-        totalCost *= 0.9; // 10% discount
-      }
+  // Display the estimated total cost in Omani Rials (OMR)
+  document.getElementById('result').textContent =
+    `Estimated Total Cost: ${totalCost.toFixed(2)} OMR`;
+});
 
-      // Display result using Omani Rial currency format
-      document.getElementById('result').textContent =
-        `Estimated Total Cost: ${totalCost.toFixed(2)} OMR`;
-    });
+// Navbar background change on mobile menu toggle
+const navbar = document.getElementById('navbar');
+const navbarCollapse = document.getElementById('navbarNav');
 
-    const navbar = document.getElementById('navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
+// When the navbar menu is expanded (mobile), add dark background
+navbarCollapse.addEventListener('show.bs.collapse', function () {
+  navbar.classList.remove('bg-transparent', 'navbar-dark');
+  navbar.classList.add('bg-dark', 'navbar-dark');
+});
 
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-    navbar.classList.remove('bg-transparent', 'navbar-dark');
-    navbar.classList.add('bg-dark', 'navbar-dark');
-    });
+// When the navbar menu is collapsed (mobile), make background transparent again
+navbarCollapse.addEventListener('hide.bs.collapse', function () {
+  navbar.classList.remove('bg-dark', 'navbar-dark');
+  navbar.classList.add('bg-transparent', 'navbar-dark');
+});
 
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-    navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent', 'navbar-dark');
-    });
+// Add hover effect on nav-links when navbar is transparent
+const navLinks = navbar.querySelectorAll('.nav-link');
 
-    // Hover effect: Apply hover styles for transparent navbar only
-    const navLinks = navbar.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+  // On mouse hover, change link color to white
+  link.addEventListener('mouseover', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.transition = 'color 0.3s ease';
+      link.style.color = 'white'; // Highlight link
+    }
+  });
 
-    navLinks.forEach(link => {
-      link.addEventListener('mouseover', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.transition = 'color 0.3s ease';
-          link.style.color = 'white'; // Change the color of the hovered link
-        }
-      });
+  // On mouse out, reset link color back to default
+  link.addEventListener('mouseout', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.color = ''; // Reset color
+    }
+  });
+});
 
-      link.addEventListener('mouseout', function () {
-        if (navbar.classList.contains('bg-transparent')) {
-          link.style.color = ''; // Reset the color back to default
-        }
-      });
-    });
+// Footer content arrays
+var logoSrc = "img/logo1.png"; // Logo source
+var title = "Explore Oman"; // Title in footer
+var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable."; // Footer description
 
-    // Footer content arrays
-var logoSrc = "img/logo1.png";
-var title = "Explore Oman";
-var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
-
+// Social media links
 var socialLinks = [
   { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
   { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
   { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
 ];
 
+// Quick access links
 var quickLinks = [
   { text: "Home", href: "index.html" },
   { text: "Destinations", href: "Destinations.html" },
@@ -268,15 +274,15 @@ var quickLinks = [
   { text: "Transportation", href: "Transportation.html" },
   { text: "Activities", href: "Activities.html" },
   { text: "Contact Us", href: "ContactUs.html" },
-  { text: "About Us", href: "About.html" },
+  { text: "About Us", href: "AboutUs.html" },
   { text: "Account", href: "account.html" }
 ];
 
-// Function to generate the footer
+// Function to generate the footer dynamically
 function generateFooterContent() {
   var footer = document.getElementById("footerContent");
 
-  // Left section (Logo, description, social)
+  // Left section: logo, title, description, social media
   var leftSection = `
     <div class="col-md-8 mb-4 text-start">
       <div class="d-flex align-items-center mb-3">
@@ -292,7 +298,7 @@ function generateFooterContent() {
     </div>
   `;
 
-  // Right section (Quick Access - aligned perfectly)
+  // Right section: quick access links
   var rightSection = `
     <div class="col-md-4 mb-4 text-start">
       <h5><strong>Quick Access</strong></h5>
@@ -302,6 +308,7 @@ function generateFooterContent() {
     </div>
   `;
 
+  // Combine left and right sections into footer
   footer.innerHTML = `
     <div class="row">
       ${leftSection}
@@ -310,40 +317,39 @@ function generateFooterContent() {
   `;
 }
 
-
-
-// Search function
+// Function to search within the footer links
 function searchFooter() {
-  var input = document.getElementById("searchInput").value.toLowerCase();
-  var listItems = document.getElementById("footerList").getElementsByTagName("li");
-  var found = false;
+  var input = document.getElementById("searchInput").value.toLowerCase(); // Get user input
+  var listItems = document.getElementById("footerList").getElementsByTagName("li"); // Get all list items
+  var found = false; // Flag to check if match is found
 
-  // Reset highlights
+  // Reset all highlights before new search
   for (var i = 0; i < listItems.length; i++) {
     listItems[i].style.backgroundColor = "";
     listItems[i].style.color = "";
   }
 
-  // Search
+  // Search through list items
   for (var i = 0; i < listItems.length; i++) {
     var li = listItems[i];
     var text = li.textContent.toLowerCase();
     if (text.includes(input) && input !== "") {
-      li.style.backgroundColor = "#2e00e6";
-      li.style.color = "#fff";
-      li.scrollIntoView({ behavior: "smooth", block: "center" });
-      found = true;
+      li.style.backgroundColor = "#2e00e6"; // Highlight found link
+      li.style.color = "#fff"; // Change text color
+      li.scrollIntoView({ behavior: "smooth", block: "center" }); // Scroll to found item
+      found = true; // Set found flag
     }
   }
 
+  // If no match found, show alert
   if (!found && input !== "") {
     alert("No matching page found. Try again!");
   }
 }
 
-// Call the footer generation on page load
+// Call footer generation function on page load
 generateFooterContent();
-  </script>
+</script>
 
 </body>
 </html>
