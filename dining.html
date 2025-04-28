@@ -155,6 +155,40 @@
 
 <!-- Scripts -->
 <script>
+const navbar = document.getElementById('navbar');
+const navbarCollapse = document.getElementById('navbarNav');
+
+// When the navbar is expanded (mobile view)
+navbarCollapse.addEventListener('show.bs.collapse', function () {
+  // Remove transparency and apply dark background
+  navbar.classList.remove('bg-transparent', 'navbar-dark');
+  navbar.classList.add('bg-dark', 'navbar-dark');
+});
+
+// When the navbar is collapsed
+navbarCollapse.addEventListener('hide.bs.collapse', function () {
+  // Reapply transparency for better visibility over background
+  navbar.classList.remove('bg-dark', 'navbar-dark');
+  navbar.classList.add('bg-transparent', 'navbar-dark');
+});
+
+// Apply hover effects on navigation links only when navbar is transparent
+const navLinks = navbar.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+  link.addEventListener('mouseover', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.transition = 'color 0.3s ease'; // Smooth color transition
+      link.style.color = 'white'; // Change link color to white on hover
+    }
+  });
+
+  link.addEventListener('mouseout', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.color = ''; // Reset link color when not hovering
+    }
+  });
+});
 // Footer content arrays
 var logoSrc = "img/logo1.png";
 var title = "Explore Oman";
@@ -250,18 +284,7 @@ function searchFooter() {
 // Call the footer generation on page load
 generateFooterContent();
 
-const navbar = document.getElementById('navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
 
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-    navbar.classList.remove('bg-transparent', 'navbar-dark');
-    navbar.classList.add('bg-light', 'navbar-light');
-    });
-
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-    navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent', 'navbar-dark');
-    });
 </script>
 
 <!-- Bootstrap JS and Popper.js -->
