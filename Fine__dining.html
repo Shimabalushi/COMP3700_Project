@@ -295,18 +295,6 @@ function searchFooter() {
 // Call the footer generation on page load
 generateFooterContent();
 
-const navbar = document.getElementById('navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
-
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-    navbar.classList.remove('bg-transparent', 'navbar-dark');
-    navbar.classList.add('bg-light', 'navbar-light');
-    });
-
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-    navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent', 'navbar-dark');
-    });
 </script>
 
 <!-- Bootstrap JS and Popper.js -->
