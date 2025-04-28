@@ -33,17 +33,24 @@
             Explore
           </a>
           <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
-            <li><a class="dropdown-item" href="Destinations.html">Destinations</a></li>
-            <li><a class="dropdown-item" href="dining.html">Dining</a></li>
-            <li><a class="dropdown-item" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-            <li><a class="dropdown-item" href="Transportation.html">Transportation</a></li>
-            <li><a class="dropdown-item" href="Activities.html">Activities</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="Destinations.html">Destinations</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="dining.html">Dining</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="Transportation.html">Transportation</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="Activities.html">Activities</a></li>
           </ul>
         </li>
 
         <!-- Tools -->
-        <li class="nav-item">
-          <a class="nav-link" href="calculate.html">Tools</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tools
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
+            <li><a class="dropdown-item active bg-light text-dark" href="calculate.html">Budget Calculator</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="Questionair.html">Questionaire</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="funpage.html">funpage</a></li>
+          </ul>
         </li>
 
         <!-- Contact Dropdown -->
@@ -52,8 +59,8 @@
             Contact
           </a>
           <ul class="dropdown-menu" aria-labelledby="contactDropdown">
-            <li><a class="dropdown-item" href="ContactUs.html">Contact Us</a></li>
-            <li><a class="dropdown-item" href="AboutUS.html">About Us</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="ContactUs.html">Contact Us</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="AboutUS.html">About Us</a></li>
           </ul>
         </li>
 
@@ -63,9 +70,9 @@
             Account
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-            <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
-            <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
-            <li><a class="dropdown-item" href="Account.html">My Account</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="sign in.html">Sign In</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="sign up.html">Sign Up</a></li>
+            <li><a class="dropdown-item active bg-light text-dark" href="Account.html">My Account</a></li>
           </ul>
         </li>
       </ul>
@@ -74,7 +81,7 @@
 </nav>
 
   <!-- Header Section -->
-  <header class="text-center text-white py-5" style="background: url('img/traditional\ omani.jpg') center center / cover no-repeat;">
+  <header class="text-center text-white py-5" style="background: url('img/traditional\ omani.jpg') center center / cover fixed;">
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
       <h1 class="display-4 fw-bold mt-5">Traditional Omani Dining</h1>
     </div>
@@ -131,13 +138,13 @@
     </div>
 </div>
 <!-- Footer -->
-<footer class="bg-dark text-light text-center text-lg-start mt-5 pt-5 pb-3">
+<footer class="bg-dark text-light text-center text-lg-start" style="margin-top: 5rem; padding-top: 3rem; padding-bottom: 1rem;">
   <div class="container p-4">
-
+    
     <!-- Search Input and Button -->
     <div class="row justify-content-center mb-5">
       <div class="col-md-6">
-        <input type="text" id="searchInput" class="form-control bg-white text-dark mb-2" placeholder="Enter a page name you want to visit">
+        <input type="text" id="searchInput" class="form-control mb-2" placeholder="Enter a page name you want to visit" style="background-color: white; color: black;">
       </div>
       <div class="col-auto">
         <button onclick="searchFooter()" class="btn btn-primary">Search</button>
@@ -150,10 +157,11 @@
   </div>
 
   <!-- Copyright -->
-  <div class="text-center p-3 bg-dark bg-opacity-75 small">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.9rem;">
     © 2025 Explore Oman. All rights reserved.
   </div>
 </footer>
+
 <!-- Scripts -->
 <script>
 // Footer content arrays
@@ -175,7 +183,7 @@ var quickLinks = [
   { text: "Transportation", href: "Transportation.html" },
   { text: "Activities", href: "Activities.html" },
   { text: "Contact Us", href: "ContactUs.html" },
-  { text: "About Us", href: "About.html" },
+  { text: "About Us", href: "AboutUs.html" },
   { text: "Account", href: "account.html" }
 ];
 
