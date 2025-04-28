@@ -1,437 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Oman - Transportation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"/>
-    <style>
-        .header{
-            background: url(img/Header-Transportation3.jpeg) no-repeat center center/cover ;
-            background-attachment: fixed;        }
-        /* Company card styles */
-        .company {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Oman - Transportation</title>
 
-        div span{
-            text-decoration: line-through; 
-            text-decoration-color: red;
-        }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        .company:hover {
-            transform: scale(1.05);
-        }
-
-        .company img {
-            width: 200px;
-
-            object-fit: cover;
-        }
-        .comph1 {
-            font-size: rem;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .company h2 {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .company .rating {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        .company .rating span {
-            color: rgb(0, 0, 0);
-        }
-
-        /* Add a subtle hover effect to the images */
-        .company a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .company a:hover {
-            color: #a68970;
-        }
-
-        .but-transportation {
-        position: relative;
-        width: 100%;
-        height: 40px;
-        background: #d3af97;
-        font-size: 16px;
-        color: #fff;
-        font-weight: 500;
-        cursor: pointer;
-        border-radius: px;
-        border: none;
-        outline: none;
-      }
-      .but-transportation:hover {
-        background-color: #7e6646;
-        }
-
-    </style>
 </head>
-<body>
-    <!-- Navbar Section -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand d-flex align-items-center" href="Index.html">
-            <img src="img/logo1.png" alt="Explore Oman Logo" width="50">
-            <span class="ms-2 fs-4 fw-bold text-white" style="text-decoration:none; ">Explore Oman</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                  data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-                  aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="Destinations.html">Destinations</a></li>
-              <li class="nav-item"><a class="nav-link" href="dining.html">Dining</a></li>
-              <li class="nav-item"><a class="nav-link" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-              <li class="nav-item"><a class="nav-link active" href="Transportation.html">Transportation</a></li>
-              <li class="nav-item"><a class="nav-link" href="Activities.html">Activities</a></li>
-              <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li>
-              <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Account
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                  <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
-                  <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
-                  <li><a class="dropdown-item" href="Account.html">My Account</a></li>
-                </ul>
-              </li>
-           </ul>
-          </div>
-        </div>
-      </nav>
+<body style="font-family: 'Times New Roman', serif;">
 
-    <!-- Main Content -->
-    <header class="header">
-        <h1>Transportation</h1>
-    </header>
+   <!-- Navigation -->
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/logo1.png" alt="Explore Oman Logo" width="50">
+        <span class="ms-2 fs-4 text-light">Explore Oman</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation" id="navbarToggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+  
+          <!-- Explore Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Explore
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+              <li><a class="dropdown-item active bg-light text-dark" href="Destinations.html">Destinations</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="dining.html">Dining</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Transportation.html">Transportation</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Activities.html">Activities</a></li>
+            </ul>
+          </li>
+  
+          <!-- Tools -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item active bg-light text-dark" href="calculate.html">Budget Calculator</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Questionair.html">Questionaire</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="funpage.html">funpage</a></li>
+            </ul>
+          </li>
+  
+          <!-- Contact Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+              <li><a class="dropdown-item active bg-light text-dark" href="ContactUs.html">Contact Us</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="AboutUS.html">About Us</a></li>
+            </ul>
+          </li>
+  
+          <!-- Account Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              <li><a class="dropdown-item active bg-light text-dark" href="sign in.html">Sign In</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="sign up.html">Sign Up</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Account.html">My Account</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- Header -->
+<header class="text-center text-white py-5 pt-7" style="background: url('img/Header-Transportation3.jpeg') center center / cover fixed;">
+  <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+    <h1 class="display-4 fw-bold mb-3 mt-5">Transportation</h1>
+  </div>
+</header>
 
 
     <div class="container my-5">
         <div class="row">
-            <h1 class="comph1" style = "color: #4c0909">Dont miss the offers!!</h1>
-            <h1 class="comph1">Daily Rent</h1>
+            <h1 class="col-12 text-center text-danger mb-4">Don't miss the offers!!</h1>
+            <h1 class="col-12 text-center mb-4">Daily Rent</h1>
 
             <!-- Daily Car 1 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/Alamo-Toyota Yaris.jpg" alt="Alamo company">
-                    <h2>Alamo</h2>
-                    <div class="rating">
-                        ⭐8.1<br/>
-                        14.390 OMR<br/>
-                        5seats<br/>
-                        Automatic<br/>
-                        300 km per rental<br/>
+                <div class="card">
+                    <img src="img/Alamo-Toyota Yaris.jpg" class="card-img-top" alt="Alamo company">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Alamo</h4>
+                        <p class="card-text">⭐ 8.1<br>14.390 OMR<br>5 seats<br>Automatic<br>300 km per rental</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
             <!-- Daily Car 2 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/Dollar-Mazda3.jpg" alt="Dollar company">
-                    <h2>Dollar</h2>
-                    <div class="rating">
-                        ⭐8<br/>
-                        14.540 OMR<br/>
-                        5seats<br/>
-                        Automatic<br/>
-                        Unlimited mileage<br/>
+                <div class="card">
+                    <img src="img/Dollar-Mazda3.jpg" class="card-img-top" alt="Dollar company">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Dollar</h4>
+                        <p class="card-text">⭐ 8<br>14.540 OMR<br>5 seats<br>Automatic<br>Unlimited mileage</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
             <!-- Daily Car 3 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/Dollar-Suzuki Dzire.jpg" alt="Dollar company">
-                    <h2>Dollar</h2>
-                    <div class="rating">
-                        ⭐8<br/>
-                        17.740 OMR<br/>
-                        4seats<br/>
-                        Automatic<br/>
-                        Unlimited mileage<br/>
+                <div class="card">
+                    <img src="img/Dollar-Suzuki Dzire.jpg" class="card-img-top" alt="Dollar company">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Dollar</h4>
+                        <p class="card-text">⭐ 8<br>17.740 OMR<br>4 seats<br>Automatic<br>Unlimited mileage</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
-            <h1 class="comph1">Weekly Rent</h1>
+            <h1 class="col-12 text-center mb-4">Weekly Rent</h1>
+
             <!-- Weekly Car 1 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/sixt-GMC Acadia.jpg" alt="SIXT company">
-                    <h2>SIXT</h2>
-                    <div class="rating">
-                        ⭐ 7.5<br/>
-                        <span>245.75 OMR</span><br/>
-                        224.290 OMR<br/>
-                        7seats<br/>
-                        Automatic<br/>
-                        1400 km per rental<br/>
+                <div class="card">
+                    <img src="img/sixt-GMC Acadia.jpg" class="card-img-top" alt="SIXT company">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">SIXT</h4>
+                        <p class="card-text">⭐ 7.5<br><span class="text-muted text-decoration-line-through">245.75 OMR</span><br>224.290 OMR<br>7 seats<br>Automatic<br>1400 km per rental</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
             <!-- Weekly Car 2 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/Dollar-Hyundai Creta.jpg" alt="Dollar company">
-                    <h2>Dollar</h2>
-                    <div class="rating">
-                        ⭐8.7<br/>
-                        <span>117.950 OMR</span><br/>
-                        92.040 OMR<br/>
-                        5seats<br/>
-                        Automatic<br/>
-                        Unlimited mileage<br/>
+                <div class="card">
+                    <img src="img/Dollar-Hyundai Creta.jpg" class="card-img-top" alt="Dollar company">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Dollar</h4>
+                        <p class="card-text">⭐ 8.7<br><span class="text-muted text-decoration-line-through">117.950 OMR</span><br>92.040 OMR<br>5 seats<br>Automatic<br>Unlimited mileage</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
             <!-- Weekly Car 3 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/enterprise-Toyota Yaris.jpg" alt="Dollar company">
-                    <h2>Enterprise</h2>
-                    <div class="rating">
-                        ⭐7.6<br/>
-                        <span>109.900 OMR</span><br/>
-                        89.790 OMR<br/>
-                        5seats<br/>
-                        Automatic<br/>
-                        2100 km per rental<br/>
+                <div class="card">
+                    <img src="img/enterprise-Toyota Yaris.jpg" class="card-img-top" alt="Enterprise company">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">Enterprise</h4>
+                      <p class="card-text">⭐ 7.6<br><span class="text-muted text-decoration-line-through">109.900 OMR</span><br>89.790 OMR<br>5 seats<br>Automatic<br>2100 km per rental</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
-            <h1 class="comph1">Monthly Rent</h1>
+            <h1 class="col-12 text-center mb-4">Monthly Rent</h1>
+
             <!-- Monthly Car 1 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/enterprise-Audi3.jpg" alt="Enterprise company">
-                    <h2>Enterprise</h2>
-                    <div class="rating">
-                        ⭐8.6<br/>
-                        <span>362.70 OMR</span><br/>
-                        324.00 OMR<br/>
-                        5seats<br/>
-                        Automatic<br/>
-                        4417 km per rental<br/>
+                <div class="card">
+                    <img src="img/enterprise-Audi3.jpg" class="card-img-top" alt="Enterprise company">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">Enterprise</h4>
+                      <p class="card-text">⭐ 8.6<br><span class="text-muted text-decoration-line-through">362.70 OMR</span><br>324.00 OMR<br>5 seats<br>Automatic<br>4417 km per rental</p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
             <!-- Monthly Car 2 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/enterprise-Suzuki Dzire.jpg" alt="Enterprise company">
-                    <h2>Enterprise</h2>
-                    <div class="rating">
-                        ⭐8.1<br/>
-                        <span>291.570 OMR</span><br/>
-                        218.240 OMR<br/>
-                        5seats<br/>
-                        Automatic<br/>
-                        4417 km per rental<br/>
+                <div class="card">
+                    <img src="img/enterprise-Suzuki Dzire.jpg" class="card-img-top" alt="Enterprise company">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">Enterprise</h4>
+                      <p class="card-text">
+                            ⭐ 8.1<br>
+                            <span class="text-muted text-decoration-line-through">291.570 OMR</span><br>
+                            218.240 OMR<br>
+                            5 seats<br>
+                            Automatic<br>
+                            4417 km per rental</p>
+                            <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
                 </div>
             </div>
 
             <!-- Monthly Car 3 -->
             <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/enterprise-Honda City.jpg" alt="Enterprise company">
-                    <h2>Enterprise</h2>
-                    <div class="rating">
+                <div class="card">
+                    <img src="img/enterprise-Honda City.jpg" class="card-img-top" alt="Enterprise company">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Enterprise</h4>
+                        <p class="card-text">
                         ⭐8.5<br/>
                         <span>348.590 OMR</span><br/>
                         278.480 OMR<br/>
                         5seats<br/>
                         Automatic<br/>
                         4000 km per rental<br/>
+                        </p>
+                        <a href="Payment.html" class="btn btn-primary">Book Now</a>
                     </div>
-                    <button class="but-transportation" onclick= "window.location.href='Payment.html'">Book Now</button>
+                </div>
+            </div>
+            
+            <h1 class="col-12 text-center mb-4">Car Hiring</h1>
+            <div class="container my-5">
+                <div class="row">
+                    <!-- Company 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/enterprise.jpg" class="card-img-top" alt="Enterprise company">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Enterprise</h4>
+                                <p class="card-text">
+                                    ⭐8.1<br>
+                                    <a href="https://maps.app.goo.gl/SVj9gCN1zi66a3Ws7" class="list-group-item list-group-item-action">📍Salalah Airport</a>
+                                    <a href="https://maps.app.goo.gl/Tt475JXyYnTSZoiX6" class="list-group-item list-group-item-action">📍Muscat Airport</a>
+                                    <a href="https://maps.app.goo.gl/5KbCc7SvQowpnszU6" class="list-group-item list-group-item-action">📍Muscat City Center</a>
+                                    <a href="https://maps.app.goo.gl/QbxVGozM271zTLAy9" class="list-group-item list-group-item-action">📍Duqm Airport</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Company 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/dollar.jpg" class="card-img-top" alt="Dollar company">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Dollar</h4>
+                                <p class="card-text">
+                                    ⭐7.7<br>
+                                    <a href="https://maps.app.goo.gl/Tt475JXyYnTSZoiX6" class="list-group-item list-group-item-action">📍Muscat Airport</a>
+                                    <a href="https://maps.app.goo.gl/Crtv85hSCP6BJiU79" class="list-group-item list-group-item-action">📍Muscat Ghala</a>
+                                    <a href="https://maps.app.goo.gl/HThur5DFfP3YNfH7A" class="list-group-item list-group-item-action">📍Muscat Crowne Plaza</a>
+                                    <a href="https://maps.app.goo.gl/53Dw3vZXkq72pYHe7" class="list-group-item list-group-item-action">📍Salalah City Center</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Company 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/Alamo.png" class="card-img-top" alt="Alamo company">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Alamo</h4>
+                                <p class="card-text">
+                                    ⭐7.2<br>
+                                    <a href="https://maps.app.goo.gl/SVj9gCN1zi66a3Ws7" class="list-group-item list-group-item-action">📍Salalah Airport</a>
+                                    <a href="https://maps.app.goo.gl/Tt475JXyYnTSZoiX6" class="list-group-item list-group-item-action">📍Muscat Airport</a>
+                                    <a href="https://maps.app.goo.gl/QbxVGozM271zTLAy9" class="list-group-item list-group-item-action">📍Duqm Airport</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                
+                    <!-- Company 4-->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/sixt.jpg" class="card-img-top" alt="Sixt company">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">SIXT</h4>
+                                <p class="card-text">
+                                    ⭐9.0<br>
+                                    <a href="https://maps.app.goo.gl/Tt475JXyYnTSZoiX6" class="list-group-item list-group-item-action">📍Muscat Airport</a>
+                                    <a href="https://maps.app.goo.gl/53Dw3vZXkq72pYHe7" class="list-group-item list-group-item-action">📍Salalah City Center</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            
                 </div>
             </div>
 
-            <h1 class="comph1">Car Hairing</h1>
-            <!-- Company 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/enterprise.jpg" alt="Enterprise company">
-                    <h2>Enterprise</h2>
-                    <div class="rating">
-                        ⭐8.1<br/>
-                        <a href = "https://maps.app.goo.gl/SVj9gCN1zi66a3Ws7">📍Salalah Airport</a><br/>
-                        <a href = "https://maps.app.goo.gl/Tt475JXyYnTSZoiX6">📍Muscat Airport</a><br/>
-                        <a href = "https://maps.app.goo.gl/5KbCc7SvQowpnszU6">📍Muscat City Center</a><br/>
-                        <a href = "https://maps.app.goo.gl/QbxVGozM271zTLAy9">📍Duqm Airport</a><br/><br/>
-                    </div>
-                </div>
-            </div>
-            <!-- Company 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/dollar.jpg" alt="Dollar company">
-                    <h2>Dollar</h2>
-                    <div class="rating">
-                        ⭐7.7<br/>
-                        <a href = "https://maps.app.goo.gl/Tt475JXyYnTSZoiX6">📍Muscat Airport</a><br/>
-                        <a href = "https://maps.app.goo.gl/Crtv85hSCP6BJiU79">📍Muscat Ghala</a><br/>
-                        <a href = "https://maps.app.goo.gl/HThur5DFfP3YNfH7A">📍Muscat Crowne Plaza</a><br/>
-                        <a href = "https://maps.app.goo.gl/53Dw3vZXkq72pYHe7">📍Salalah City Center</a><br/><br/>
-                    </div>
-                </div>
-            </div>
-            <!-- Company 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/sixt.jpg" alt="Sixt company">
-                    <h2>SIXT</h2>
-                    <div class="rating">
-                        ⭐9.0<br/>
-                        <a href = "https://maps.app.goo.gl/Tt475JXyYnTSZoiX6">📍Muscat Airport</a><br/>
-                        <a href = "https://maps.app.goo.gl/53Dw3vZXkq72pYHe7">📍Salalah City Center</a><br/><br/><br/><br/>
-                    </div>
-                </div>
-            </div>
-            <!-- Company 4 -->
-            <div class="col-md-4 mb-4">
-                <div class="company">
-                    <img src="img/Alamo.png" alt="Alamo company">
-                    <h2>Alamo</h2>
-                    <div class="rating">
-                        ⭐7.2<br/>
-                        <a href = "https://maps.app.goo.gl/SVj9gCN1zi66a3Ws7">📍Salalah Airport</a><br/>                
-                        <a href = "https://maps.app.goo.gl/Tt475JXyYnTSZoiX6">📍Muscat Airport</a><br/>
-                        <a href = "https://maps.app.goo.gl/QbxVGozM271zTLAy9">📍Duqm Airport</a><br/><br/><br/>
-                    </div>
-                </div>
-            </div>
+            <script>
+              // Constructor function for Chauffeur companies
+              function ChauffeurCompany(name, logo, phone, email, instagram) {
+                this.name = name;
+                this.logo = logo;
+                this.phone = phone;
+                this.email = email;
+                this.instagram = instagram || null;
+                
+                this.getContactHTML = function() {
+                  let html = `
+                    <img src="${this.logo}" alt="${this.name} company" class="img-fluid" style="width: 150px;"><br>
+                    <strong>Contact ${this.name}:</strong><br>
+                    <a href="tel:${this.phone}" class="list-group-item list-group-item-secondary">Call</a><br>
+                  `;
+                  
+                  if (this.email) {
+                    html += `<a href="mailto:${this.email}" class="list-group-item list-group-item-secondary">Send Email</a>`;
+                  }
+                  
+                  if (this.instagram) {
+                    html += `<br><a href="${this.instagram}" class="list-group-item list-group-item-secondary">Instagram</a>`;
+                  }
+                  
+                  return html;
+                };
+              }
 
-        </div>
+              // Array of chauffeur companies
+              const chauffeurCompanies = [
+                new ChauffeurCompany(
+                  "Muscat Nature",
+                  "img/Muscat Nature.png",
+                  "+96892221008",
+                  "info@muscatnature.com"
+                ),
+                new ChauffeurCompany(
+                  "Europcar",
+                  "img/Europcar.png",
+                  "+96879045727",
+                  "sales@europcaroman.com"
+                ),
+                new ChauffeurCompany(
+                  "DUNES",
+                  "img/DUNES.png",
+                  "+96824992674",
+                  null,
+                  "https://www.instagram.com/omandunes_adventures/"
+                )
+              ];
+
+              // Function to populate the table
+              function populateChauffeurTable() {
+                const tableBody = document.querySelector('.table tbody');
+                const row = document.createElement('tr');
+                
+                chauffeurCompanies.forEach(company => {
+                  const cell = document.createElement('td');
+                  cell.innerHTML = company.getContactHTML();
+                  row.appendChild(cell);
+                });
+                
+                tableBody.appendChild(row);
+              }
+
+              // Call the function when the page loads
+              window.addEventListener('DOMContentLoaded', populateChauffeurTable);
+            </script>
+            <h1 class="col-12 text-center mb-4">Chauffeurs</h1>
+            <div class="container my-5">
+                <table class="table table-bordered text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Muscat Nature</th>
+                            <th scope="col">Europcar</th>
+                            <th scope="col">DUNES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center text-lg-start mt-5 pt-5 pb-3">
+  <div class="container p-4">
+
+    <!-- Search Input and Button -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control bg-white text-dark mb-2" placeholder="Enter a page name you want to visit">
+      </div>
+      <div class="col-auto">
+        <button onclick="searchFooter()" class="btn btn-primary">Search</button>
+      </div>
     </div>
-    
-    <h1 class="comph1">Chauffeurs</h1>
-    <table border="1" cellpadding="20" style="width: 100%; text-align: center; border-collapse: collapse;">
-      <thead>
-        <tr>
-          <th>Muscat Nature</th>
-          <th>Europcar</th>
-          <th>DUNES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <img src="img/Muscat Nature.png" alt="Muscat Nature company" width="150"><br>
-            <strong>Contact Muscat Nature:</strong><br>
-            <a href="tel:+96892221008"><button class="but-transportation" type="button">Call</button></a><br>
-            <a href="mailto:info@muscatnature.com"><button class="but-transportation" type="button">Send Email</button></a>
-          </td>
-          <td>
-            <img src="img/Europcar.png" alt="Europcar company" width="150"><br>
-            <strong>Contact Europcar:</strong><br>
-            <a href="tel:+96879045727"><button class="but-transportation" type="button">Call</button></a><br>
-            <a href="mailto:sales@europcaroman.com"><button class="but-transportation" type="button">Send Email</button></a>
-          </td>
-          <td>
-            <img src="img/DUNES.png" alt="DUNES company" width="150"><br>
-            <strong>Contact DUNES:</strong><br>
-            <a href="tel:+96824992674"><button class="but-transportation" type="button">Call</button></a>
-            <a href="https://www.instagram.com/omandunes_adventures/"><button class="but-transportation" type="button">Instagram</button></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    
-        </div>
-    </div>   
 
- <!-- Footer Section -->
- <footer style="background-color: #d3af97;">
-    <div class="footer-container">
-        <table class="footer-table">
-            <tr>
-                <!-- Left Column -->
-                <td class="footer-left">
-                    <div class="logo-title">
-                        <img src="img/logo1.png" alt="Explore Oman Logo" width="80">
-                        <h3>Explore Oman</h3>
-                    </div>
-                    <h5 class="description" >
-                        Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.
-                    </h5>
-                    <h5>Follow Us :</h5>
-                    <p>📷 Instagram: @exploreoman</p>
-                    <p>📘 Facebook: Explore Oman</p>
-                    <p>🐦 Twitter/X: @explore_oman</p>
-                </td>
+    <!-- Footer content will be generated here -->
+    <div id="footerContent" class="row"></div>
 
-                <!-- Right Column -->
-                <td class="footer-right">
-                    <div class="quick-access">
-                        <h5>Quick Access</h5>
-                        <table>
-                            <tr><td><a href="Index.html">Home</a></td></tr>
-                            <tr><td><a href="Destinations.html">Destinations</a></td></tr>
-                            <tr><td><a href="dining.html">Dining</a></td></tr>
-                            <tr><td><a href="Hotels and Accommodations.html">Hotels and Accommodations</a></td></tr>
-                            <tr><td><a href="Transportation.html">Transportation</a></td></tr>
-                            <tr><td><a href="Activities.html">Activities</a></td></tr>
-                            <tr><td><a href="ContactUs.html">Contact Us</a></td></tr>
-                            <tr><td><a href="AboutUs.html">About Us</a></td></tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
+  </div>
 
-        <div class="footer-bottom">
-            <p>© 2025 Explore Oman. All rights reserved.</p>
-        </div>
-    </div>
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark bg-opacity-75 small">
+    © 2025 Explore Oman. All rights reserved.
+  </div>
 </footer>
-  
-  
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Scroll behavior and navbar animation -->
+<script>
+  const navbar = document.getElementById('navbar');
+  const navbarCollapse = document.getElementById('navbarNav');
+
+  navbarCollapse.addEventListener('show.bs.collapse', function () {
+  navbar.classList.remove('bg-transparent', 'navbar-dark');
+  navbar.classList.add('bg-dark', 'navbar-dark');
+  });
+
+  navbarCollapse.addEventListener('hide.bs.collapse', function () {
+  navbar.classList.remove('bg-dark', 'navbar-dark');
+  navbar.classList.add('bg-transparent', 'navbar-dark');
+  });
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    // Hover effect: Apply hover styles for transparent navbar only
+    const navLinks = navbar.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('mouseover', function () {
+        if (navbar.classList.contains('bg-transparent')) {
+          link.style.transition = 'color 0.3s ease';
+          link.style.color = 'white'; // Change the color of the hovered link
+        }
+      });
+
+      link.addEventListener('mouseout', function () {
+        if (navbar.classList.contains('bg-transparent')) {
+          link.style.color = ''; // Reset the color back to default
+        }
+      });
+    });
+
+  window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Footer content arrays
+var logoSrc = "img/logo1.png";
+var title = "Explore Oman";
+var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
+
+var socialLinks = [
+  { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
+  { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
+  { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
+];
+
+var quickLinks = [
+  { text: "Home", href: "index.html" },
+  { text: "Destinations", href: "Destinations.html" },
+  { text: "Dining", href: "dining.html" },
+  { text: "Hotels and Accommodations", href: "Hotels and Accommodations.html" },
+  { text: "Transportation", href: "Transportation.html" },
+  { text: "Activities", href: "Activities.html" },
+  { text: "Contact Us", href: "ContactUs.html" },
+  { text: "About Us", href: "AboutUs.html" },
+  { text: "Account", href: "account.html" }
+];
+
+// Function to generate the footer
+function generateFooterContent() {
+  var footer = document.getElementById("footerContent");
+
+  // Left section (Logo, description, social)
+  var leftSection = `
+    <div class="col-md-8 mb-4 text-start">
+      <div class="d-flex align-items-center mb-3">
+        <img src="${logoSrc}" alt="Explore Oman Logo" width="50" class="me-3">
+        <h4 class="mb-0">${title}</h4>
+      </div>
+      <p>${description}</p>
+
+      <p class="mt-4 mb-2"><strong>Follow Us:</strong></p>
+      <ul class="list-unstyled">
+        ${socialLinks.map(link => `<li><a href="${link.href}" class="text-light" target="_blank">${link.icon} ${link.platform}: ${link.username}</a></li>`).join('')}
+      </ul>
+    </div>
+  `;
+
+  // Right section (Quick Access - aligned perfectly)
+  var rightSection = `
+    <div class="col-md-4 mb-4 text-start">
+      <h5><strong>Quick Access</strong></h5>
+      <ul class="list-unstyled" id="footerList">
+        ${quickLinks.map(link => `<li><a href="${link.href}" class="text-light" style="text-decoration: none;">${link.text}</a></li>`).join('')}
+      </ul>
+    </div>
+  `;
+
+  footer.innerHTML = `
+    <div class="row">
+      ${leftSection}
+      ${rightSection}
+    </div>
+  `;
+}
+
+
+
+// Search function
+function searchFooter() {
+  var input = document.getElementById("searchInput").value.toLowerCase();
+  var listItems = document.getElementById("footerList").getElementsByTagName("li");
+  var found = false;
+
+  // Reset highlights
+  for (var i = 0; i < listItems.length; i++) {
+    listItems[i].style.backgroundColor = "";
+    listItems[i].style.color = "";
+  }
+
+  // Search
+  for (var i = 0; i < listItems.length; i++) {
+    var li = listItems[i];
+    var text = li.textContent.toLowerCase();
+    if (text.includes(input) && input !== "") {
+      li.style.backgroundColor = "#2e00e6";
+      li.style.color = "#fff";
+      li.scrollIntoView({ behavior: "smooth", block: "center" });
+      found = true;
+    }
+  }
+
+  if (!found && input !== "") {
+    alert("No matching page found. Try again!");
+  }
+}
+
+// Call the footer generation on page load
+generateFooterContent();
+</script>
 
 </body>
 </html>
