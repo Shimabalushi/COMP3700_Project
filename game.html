@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Explore Oman - Fun</title>
+  
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  </head>
+  <body style="font-family: 'Times New Roman', serif;">
+  
+     <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo1.png" alt="Explore Oman Logo" width="50">
+          <span class="ms-2 fs-4 text-light">Explore Oman</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+                aria-label="Toggle navigation" id="navbarToggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+    
+            <!-- Explore Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Explore
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+                <li><a class="dropdown-item active bg-light text-dark" href="Destinations.html">Destinations</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="dining.html">Dining</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="Transportation.html">Transportation</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="Activities.html">Activities</a></li>
+              </ul>
+            </li>
+    
+            <!-- Tools -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tools
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
+                <li><a class="dropdown-item active bg-light text-dark" href="calculate.html">Budget Calculator</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="Questionair.html">Questionaire</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="funpage.html">funpage</a></li>
+              </ul>
+            </li>
+    
+            <!-- Contact Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contact
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                <li><a class="dropdown-item active bg-light text-dark" href="ContactUs.html">Contact Us</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="AboutUS.html">About Us</a></li>
+              </ul>
+            </li>
+    
+            <!-- Account Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                <li><a class="dropdown-item active bg-light text-dark" href="sign in.html">Sign In</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="sign up.html">Sign Up</a></li>
+                <li><a class="dropdown-item active bg-light text-dark" href="Account.html">My Account</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  
+  <!-- Header -->
+  <header class="text-center text-white py-5 pt-7" style="background: url('img/index.jpg') center center / cover fixed;">
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+      <h1 class="display-4 fw-bold mb-3 mt-5">Fun Page</h1>
+    </div>
+  </header>
+ 
+  <div class="container text-center my-5">
+    <h2>Guess It!</h2>
+    <p>Guess the city ⭐🎉</p>
+  
+    <p>
+      <span id="level1" style="font-weight: bolder;">Level 1</span><br />
+      <span id="level2" style="font-weight: normal;">Level 2</span><br />
+      <span id="level3" style="font-weight: normal;">Level 3</span><br />
+    </p>
+  
+    <!-- Image of the city -->
+    <img id="city-img" src="" alt="City Image" class="img-fluid my-3" style="max-width: 400px;">
+    <div id="options" class="d-flex justify-content-center gap-3 flex-wrap"></div>
+    <div id="result" class="mt-3"></div>
+    <div id="final-result" class="mt-3" style="display:none;"></div>
+  </div>
+  
+
+  <script>
+    // Array of city objects containing image paths and correct answers
+    const cities = [
+        { image: 'img/fun-Al Alam Palace.jpg', correctAnswer: "Muscat" },
+        { image: 'img/fun-Nizwa.jpg', correctAnswer: "Nizwa" },
+        { image: 'img/fun-salalah.jpg', correctAnswer: "Salalah" }
+    ];
+  
+    // Game state variables
+    let currentAnswerIndex = 0;  // Tracks which city/question we're currently on
+    let score = 0;               // Tracks player's correct answers
+    const imageElement = document.getElementById('city-img');         // City image element
+    const optionsContainer = document.getElementById('options');      // Container for answer buttons
+    const resultElement = document.getElementById('result');          // Displays correct/incorrect feedback
+    const finalResultElement = document.getElementById('final-result'); // Displays final score
+  
+    // Load saved scores from localStorage or initialize empty array
+    let gameScores = JSON.parse(localStorage.getItem('gameScores')) || [];
+    
+    /**
+     * Displays the current city image
+     */
+    function displayCity() {
+        const city = cities[currentAnswerIndex];
+        imageElement.src = city.image;  // Set image source
+    }
+  
+    /**
+     * Creates and displays answer option buttons
+     */
+    function displayOptions() {
+        const city = cities[currentAnswerIndex];
+        optionsContainer.innerHTML = '';  // Clear previous options
+        
+        // Create array of options (correct answer + 3 wrong answers) and shuffle
+        const shuffledOptions = [city.correctAnswer, 'Suhar', 'Ibra', 'Sur'].sort(() => Math.random() - 0.5);
+        
+        // Create a button for each option
+        shuffledOptions.forEach(option => {
+            const optionElement = document.createElement('button');
+            optionElement.textContent = option;
+            optionElement.classList.add('btn', 'btn-dark');
+            // Add click handler to check answer when button is clicked
+            optionElement.addEventListener('click', () => checkAnswer(option));
+            optionsContainer.appendChild(optionElement);
+        });
+    }
+  
+    /**
+     * Checks if selected answer is correct and updates game state
+     * @param {string} selectedOption - The answer chosen by the player
+     */
+    function checkAnswer(selectedOption) {
+        const correctAnswer = cities[currentAnswerIndex].correctAnswer;
+        
+        if (selectedOption === correctAnswer) {
+            score++;  // Increment score for correct answer
+            resultElement.textContent = "Correct! 🎉";
+            resultElement.style.color = "green";
+        } else {
+            resultElement.textContent = "❌ Incorrect. The correct answer is: " + correctAnswer;
+            resultElement.style.color = "red";
+        }
+        
+        // Move to next question after 2 seconds
+        setTimeout(nextCity, 2000);
+    }
+  
+    /**
+     * Advances to the next city/question or ends game if complete
+     */
+    function nextCity() {
+        currentAnswerIndex++;
+        
+        if (currentAnswerIndex < cities.length) {
+            // More questions remain - display next city
+            displayCity();
+            displayOptions();
+            resultElement.textContent = '';  // Clear previous result
+            updateLevelDisplay();  // Update which level is highlighted
+        } else {
+            // No more questions - show final results
+            showFinalResult();
+        }
+    }
+  
+    /**
+     * Updates the visual indication of current level
+     */
+    function updateLevelDisplay() {
+        // Highlight current level by making it bold
+        document.getElementById('level1').style.fontWeight = (currentAnswerIndex === 0) ? 'bolder' : 'normal';
+        document.getElementById('level2').style.fontWeight = (currentAnswerIndex === 1) ? 'bolder' : 'normal';
+        document.getElementById('level3').style.fontWeight = (currentAnswerIndex === 2) ? 'bolder' : 'normal';
+    }
+  
+    /**
+     * Saves scores array to localStorage
+     */
+    function saveScores() {
+      localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    }
+    
+    /**
+     * Adds a new score to the scores array and maintains top 10
+     * @param {number} score - The player's final score to add
+     */
+    function addScore(score) {
+      // Add new score with current timestamp
+      gameScores.push({
+        score: score,
+        date: new Date().toISOString()
+      });
+      
+      // Sort scores: first by score (highest first), then by date (newest first)
+      gameScores.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      // Keep only top 10 scores
+      gameScores = gameScores.slice(0, 10);
+      
+      saveScores();          // Save to localStorage
+      updateScoreTable();    // Update the displayed table
+    }
+    
+    /**
+     * Updates the high scores table in the DOM
+     */
+    function updateScoreTable() {
+      const tbody = document.querySelector('#scoreTable tbody');
+      if (!tbody) return;  // Exit if table not found
+      
+      tbody.innerHTML = '';  // Clear existing rows
+      
+      // Create a table row for each score
+      gameScores.forEach(scoreData => {
+        const row = document.createElement('tr');
+        
+        // Date cell (first column)
+        const dateCell = document.createElement('td');
+        dateCell.className = 'text-center';
+        dateCell.textContent = new Date(scoreData.date).toLocaleDateString();
+        
+        // Score cell (second column)
+        const scoreCell = document.createElement('td');
+        scoreCell.className = 'text-center fw-bold';
+        scoreCell.textContent = `${scoreData.score}/3`;
+        
+        // Add cells to row and row to table
+        row.appendChild(dateCell);
+        row.appendChild(scoreCell);
+        tbody.appendChild(row);
+      });
+    }
+  
+    /**
+     * Shows final results when game is complete
+     */
+    function showFinalResult() {
+      // Hide game elements
+      imageElement.style.display = 'none';
+      optionsContainer.style.display = 'none';
+      
+      // Display final messages
+      resultElement.textContent = "Game Over. Great job!";
+      finalResultElement.style.display = 'block';
+      finalResultElement.innerHTML = `
+        <h3 class="text-center">Your final score is: ${score} / 3 🎉</h3>
+        <button class="btn btn-outline-primary mt-2" onclick="location.reload()">Play Again</button>
+      `;
+      
+      // Save the score
+      addScore(score);
+    }
+  
+    // Initialize the game when page loads
+    displayCity();          // Show first city image
+    displayOptions();       // Show answer options
+    updateLevelDisplay();   // Highlight level 1
+    updateScoreTable();     // Load any existing high scores
+  </script>
+
+  
+  
+  <!-- Score Table Section -->
+  <section class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">High Scores</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered" id="scoreTable">
+              <thead class="table-dark">
+                <tr>
+                  <th class="text-center">Date</th>
+                  <th class="text-center">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Scores will appear here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  
+<!-- Footer -->
+<footer class="bg-dark text-light text-center text-lg-start mt-5 pt-5 pb-3">
+    <div class="container p-4">
+  
+      <!-- Search Input and Button -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+          <input type="text" id="searchInput" class="form-control bg-white text-dark mb-2" placeholder="Enter a page name you want to visit">
+        </div>
+        <div class="col-auto">
+          <button onclick="searchFooter()" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+  
+      <!-- Footer content will be generated here -->
+      <div id="footerContent" class="row"></div>
+  
+    </div>
+  
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-dark bg-opacity-75 small">
+      © 2025 Explore Oman. All rights reserved.
+    </div>
+  </footer>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Scroll behavior and navbar animation -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    const navbarCollapse = document.getElementById('navbarNav');
+  
+    navbarCollapse.addEventListener('show.bs.collapse', function () {
+    navbar.classList.remove('bg-transparent', 'navbar-dark');
+    navbar.classList.add('bg-dark', 'navbar-dark');
+    });
+  
+    navbarCollapse.addEventListener('hide.bs.collapse', function () {
+    navbar.classList.remove('bg-dark', 'navbar-dark');
+    navbar.classList.add('bg-transparent', 'navbar-dark');
+    });
+  
+  
+      // Hover effect: Apply hover styles for transparent navbar only
+      const navLinks = navbar.querySelectorAll('.nav-link');
+  
+      navLinks.forEach(link => {
+        link.addEventListener('mouseover', function () {
+          if (navbar.classList.contains('bg-transparent')) {
+            link.style.transition = 'color 0.3s ease';
+            link.style.color = 'white'; // Change the color of the hovered link
+          }
+        });
+  
+        link.addEventListener('mouseout', function () {
+          if (navbar.classList.contains('bg-transparent')) {
+            link.style.color = ''; // Reset the color back to default
+          }
+        });
+      });
+  
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  
+    // Footer content arrays
+  var logoSrc = "img/logo1.png";
+  var title = "Explore Oman";
+  var description = "Welcome to Explore Oman, your trusted source for discovering the best destinations, experiences, and activities across Oman. We are committed to making your travel planning easier, faster, and more enjoyable.";
+  
+  var socialLinks = [
+    { icon: "📷", platform: "Instagram", username: "@exploreoman", href: "https://www.instagram.com/exploreoman" },
+    { icon: "📘", platform: "Facebook", username: "Explore Oman", href: "https://www.facebook.com/exploreoman" },
+    { icon: "🐦", platform: "Twitter/X", username: "@explore_oman", href: "https://twitter.com/explore_oman" }
+  ];
+  
+  var quickLinks = [
+    { text: "Home", href: "index.html" },
+    { text: "Destinations", href: "Destinations.html" },
+    { text: "Dining", href: "dining.html" },
+    { text: "Hotels and Accommodations", href: "Hotels and Accommodations.html" },
+    { text: "Transportation", href: "Transportation.html" },
+    { text: "Activities", href: "Activities.html" },
+    { text: "Contact Us", href: "ContactUs.html" },
+    { text: "About Us", href: "AboutUs.html" },
+    { text: "Account", href: "account.html" }
+  ];
+  
+  // Function to generate the footer
+  function generateFooterContent() {
+    var footer = document.getElementById("footerContent");
+  
+    // Left section (Logo, description, social)
+    var leftSection = `
+      <div class="col-md-8 mb-4 text-start">
+        <div class="d-flex align-items-center mb-3">
+          <img src="${logoSrc}" alt="Explore Oman Logo" width="50" class="me-3">
+          <h4 class="mb-0">${title}</h4>
+        </div>
+        <p>${description}</p>
+  
+        <p class="mt-4 mb-2"><strong>Follow Us:</strong></p>
+        <ul class="list-unstyled">
+          ${socialLinks.map(link => `<li><a href="${link.href}" class="text-light" target="_blank">${link.icon} ${link.platform}: ${link.username}</a></li>`).join('')}
+        </ul>
+      </div>
+    `;
+  
+    // Right section (Quick Access - aligned perfectly)
+    var rightSection = `
+      <div class="col-md-4 mb-4 text-start">
+        <h5><strong>Quick Access</strong></h5>
+        <ul class="list-unstyled" id="footerList">
+          ${quickLinks.map(link => `<li><a href="${link.href}" class="text-light" style="text-decoration: none;">${link.text}</a></li>`).join('')}
+        </ul>
+      </div>
+    `;
+  
+    footer.innerHTML = `
+      <div class="row">
+        ${leftSection}
+        ${rightSection}
+      </div>
+    `;
+  }
+  
+  
+  
+  // Search function
+  function searchFooter() {
+    var input = document.getElementById("searchInput").value.toLowerCase();
+    var listItems = document.getElementById("footerList").getElementsByTagName("li");
+    var found = false;
+  
+    // Reset highlights
+    for (var i = 0; i < listItems.length; i++) {
+      listItems[i].style.backgroundColor = "";
+      listItems[i].style.color = "";
+    }
+  
+    // Search
+    for (var i = 0; i < listItems.length; i++) {
+      var li = listItems[i];
+      var text = li.textContent.toLowerCase();
+      if (text.includes(input) && input !== "") {
+        li.style.backgroundColor = "#2e00e6";
+        li.style.color = "#fff";
+        li.scrollIntoView({ behavior: "smooth", block: "center" });
+        found = true;
+      }
+    }
+  
+    if (!found && input !== "") {
+      alert("No matching page found. Try again!");
+    }
+  }
+  
+  // Call the footer generation on page load
+  generateFooterContent();
+  </script>
+  
+  </body>
+  </html>
+  
+  

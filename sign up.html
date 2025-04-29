@@ -11,7 +11,7 @@
 <body style="font-family: 'Times New Roman', serif;">
 
    <!-- Navigation -->
- <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-3">
+   <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
         <img src="img/explore-oman-logo.png" alt="Explore Oman Logo" width="50">
@@ -34,17 +34,24 @@
               Explore
             </a>
             <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
-              <li><a class="dropdown-item" href="Destinations.html">Destinations</a></li>
-              <li><a class="dropdown-item" href="dining.html">Dining</a></li>
-              <li><a class="dropdown-item" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
-              <li><a class="dropdown-item" href="Transportation.html">Transportation</a></li>
-              <li><a class="dropdown-item" href="Activities.html">Activities</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Destinations.html">Destinations</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="dining.html">Dining</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Hotels and Accommodations.html">Hotels and Accommodations</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Transportation.html">Transportation</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Activities.html">Activities</a></li>
             </ul>
           </li>
   
           <!-- Tools -->
-          <li class="nav-item">
-            <a class="nav-link" href="calculate.html">Tools</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item active bg-light text-dark" href="calculate.html">Budget Calculator</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Questionair.html">Questionaire</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="funpage.html">funpage</a></li>
+            </ul>
           </li>
   
           <!-- Contact Dropdown -->
@@ -53,8 +60,8 @@
               Contact
             </a>
             <ul class="dropdown-menu" aria-labelledby="contactDropdown">
-              <li><a class="dropdown-item" href="ContactUs.html">Contact Us</a></li>
-              <li><a class="dropdown-item" href="AboutUS.html">About Us</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="ContactUs.html">Contact Us</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="AboutUS.html">About Us</a></li>
             </ul>
           </li>
   
@@ -64,9 +71,9 @@
               Account
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-              <li><a class="dropdown-item" href="sign in.html">Sign In</a></li>
-              <li><a class="dropdown-item" href="sign up.html">Sign Up</a></li>
-              <li><a class="dropdown-item" href="Account.html">My Account</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="sign in.html">Sign In</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="sign up.html">Sign Up</a></li>
+              <li><a class="dropdown-item active bg-light text-dark" href="Account.html">My Account</a></li>
             </ul>
           </li>
         </ul>
@@ -75,122 +82,114 @@
   </nav>
   
     <!-- Header -->
-    <header class="text-center text-white py-5" style="background: url('img/index2.jpg') center center / cover no-repeat;">
+    <header class="text-center text-white py-5" style="background: url('img/index2.jpg') center center / cover fixed;">
       <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
         <h1 class="display-4 fw-bold mt-5">Explore Oman - Sign Up</h1>
       </div>
     </header>
 
+<!-- Signup Form -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Sign Up</h2>
 
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Sign Up</h2>
-    
-        <!-- Success Message (Hidden by Default) -->
-        <div id="successMessage" class="alert alert-success d-none text-center" role="alert">
-            🎉 Your account has been created successfully!
+  <!-- Messages -->
+  <div id="messages"></div>
+
+  <form id="signupForm" class="p-4 border rounded bg-light">
+    <!-- User Type and Gender -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">User Type:</label>
+        <div class="d-flex">
+          <div class="form-check me-3">
+            <input class="form-check-input" type="radio" name="userType" id="customer" value="customer" required>
+            <label class="form-check-label" for="customer">Customer</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="userType" id="businessOwner" value="businessOwner">
+            <label class="form-check-label" for="businessOwner">Business Owner</label>
+          </div>
         </div>
-    
-        <!-- Error Message for Password Mismatch (Hidden by Default) -->
-        <div id="passwordMismatchMessage" class="alert alert-danger d-none text-center" role="alert">
-            ⚠️ Passwords do not match. Please try again.
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Gender:</label>
+        <div class="d-flex">
+          <div class="form-check me-3">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
         </div>
-    
-        <form id="signupForm" action="https://httpbin.org/get" method="GET" class="p-4 border rounded bg-light">
-            <!-- User Type and Gender -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label">User Type:</label>
-                    <div class="d-flex">
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="userType" id="customer" value="customer" required>
-                            <label class="form-check-label" for="customer">Customer</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="userType" id="businessOwner" value="businessOwner">
-                            <label class="form-check-label" for="businessOwner">Business Owner</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Gender:</label>
-                    <div class="d-flex">
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-                            <label class="form-check-label" for="female">Female</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                            <label class="form-check-label" for="male">Male</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- First Name and Last Name -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required>
-                </div>
-            </div>
-    
-            <!-- Username and Birthday -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="birthday" class="form-label">Birthday</label>
-                    <input type="date" id="birthday" name="birthday" class="form-control" required>
-                </div>
-            </div>
-    
-            <!-- Email and Phone Number -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Enter your phone number" required>
-                </div>
-            </div>
-    
-            <!-- Password and Confirm Password -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Re-enter your password" required>
-                </div>
-            </div>
-    
-            <!-- Submit Button -->
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-            </div>
-        </form>
+      </div>
     </div>
 
+    <!-- First Name and Last Name -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required>
+      </div>
+    </div>
+
+    <!-- Username and Birthday -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username" required>
+      </div>
+      <div class="col-md-6">
+        <label for="birthday" class="form-label">Birthday</label>
+        <input type="date" id="birthday" name="birthday" class="form-control" required>
+      </div>
+    </div>
+
+    <!-- Email and Phone Number -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+      </div>
+      <div class="col-md-6">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Enter your phone number" required>
+      </div>
+    </div>
+
+    <!-- Password and Confirm Password -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required>
+      </div>
+      <div class="col-md-6">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Re-enter your password" required>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+  </form>
+</div>
 
     
 <!-- Footer -->
-<footer class="bg-dark text-light text-center text-lg-start mt-5 pt-5 pb-3">
+<footer class="bg-dark text-light text-center text-lg-start" style="margin-top: 5rem; padding-top: 3rem; padding-bottom: 1rem;">
   <div class="container p-4">
-
+    
     <!-- Search Input and Button -->
     <div class="row justify-content-center mb-5">
       <div class="col-md-6">
-        <input type="text" id="searchInput" class="form-control bg-white text-dark mb-2" placeholder="Enter a page name you want to visit">
+        <input type="text" id="searchInput" class="form-control mb-2" placeholder="Enter a page name you want to visit" style="background-color: white; color: black;">
       </div>
       <div class="col-auto">
         <button onclick="searchFooter()" class="btn btn-primary">Search</button>
@@ -203,13 +202,49 @@
   </div>
 
   <!-- Copyright -->
-  <div class="text-center p-3 bg-dark bg-opacity-75 small">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.9rem;">
     © 2025 Explore Oman. All rights reserved.
   </div>
 </footer>
-    
+
 <!-- Scripts -->
 <script>
+
+const navbar = document.getElementById('navbar');
+const navbarCollapse = document.getElementById('navbarNav');
+
+// When the navbar is expanded (mobile view)
+navbarCollapse.addEventListener('show.bs.collapse', function () {
+  // Remove transparency and apply dark background
+  navbar.classList.remove('bg-transparent', 'navbar-dark');
+  navbar.classList.add('bg-dark', 'navbar-dark');
+});
+
+// When the navbar is collapsed
+navbarCollapse.addEventListener('hide.bs.collapse', function () {
+  // Reapply transparency for better visibility over background
+  navbar.classList.remove('bg-dark', 'navbar-dark');
+  navbar.classList.add('bg-transparent', 'navbar-dark');
+});
+
+// Apply hover effects on navigation links only when navbar is transparent
+const navLinks = navbar.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+  link.addEventListener('mouseover', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.transition = 'color 0.3s ease'; // Smooth color transition
+      link.style.color = 'white'; // Change link color to white on hover
+    }
+  });
+
+  link.addEventListener('mouseout', function () {
+    if (navbar.classList.contains('bg-transparent')) {
+      link.style.color = ''; // Reset link color when not hovering
+    }
+  });
+});
+    
 // Footer content arrays
 var logoSrc = "img/logo1.png";
 var title = "Explore Oman";
@@ -229,7 +264,7 @@ var quickLinks = [
   { text: "Transportation", href: "Transportation.html" },
   { text: "Activities", href: "Activities.html" },
   { text: "Contact Us", href: "ContactUs.html" },
-  { text: "About Us", href: "About.html" },
+  { text: "About Us", href: "AboutUs.html" },
   { text: "Account", href: "account.html" }
 ];
 
@@ -306,9 +341,11 @@ function searchFooter() {
 generateFooterContent();
 
 document.getElementById('signupForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form from submitting immediately
+    event.preventDefault();
+    const messages = document.getElementById('messages');
+    messages.innerHTML = ''; // Clear old messages
+    const errors = [];
 
-    // Get form values
     const userType = document.querySelector('input[name="userType"]:checked');
     const gender = document.querySelector('input[name="gender"]:checked');
     const firstName = document.getElementById('firstName').value.trim();
@@ -320,57 +357,25 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
-    // Validation
-    if (!userType) {
-        alert('Please select a user type.');
-        return;
-    }
-    if (!gender) {
-        alert('Please select your gender.');
-        return;
-    }
-    if (firstName === '' || lastName === '' || username === '' || birthday === '' || email === '' || phoneNumber === '' || password === '' || confirmPassword === '') {
-        alert('Please fill in all fields.');
-        return;
-    }
-    if (!email.includes('@') || !email.includes('.')) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-    if (!/^\d{8,15}$/.test(phoneNumber)) {
-        alert('Phone number must contain only digits (8 to 15 numbers).');
-        return;
-    }
-    if (password !== confirmPassword) {
-        document.getElementById('passwordMismatchMessage').classList.remove('d-none'); // Show error message
-        return;
+    if (!userType) errors.push("Please select a user type.");
+    if (!gender) errors.push("Please select your gender.");
+    if (firstName === '') errors.push("First name is required.");
+    if (lastName === '') errors.push("Last name is required.");
+    if (username === '') errors.push("Username is required.");
+    if (birthday === '') errors.push("Birthday is required.");
+    if (email === '' || !email.includes('@') || !email.includes('.')) errors.push("Please enter a valid email address.");
+    if (!/^\d{8,15}$/.test(phoneNumber)) errors.push("Phone number must contain only numbers (8 to 15 digits).");
+    if (password === '') errors.push("Password is required.");
+    if (confirmPassword === '') errors.push("Please confirm your password.");
+    if (password !== confirmPassword) errors.push("Passwords do not match.");
+
+    if (errors.length > 0) {
+        messages.innerHTML = `<div class="alert alert-danger">${errors.join('<br>')}</div>`;
     } else {
-        document.getElementById('passwordMismatchMessage').classList.add('d-none'); // Hide error message if passwords match
+        messages.innerHTML = `<div class="alert alert-success">🎉 Your account has been created successfully!</div>`;
+        this.reset();
     }
-
-    // Show success message
-    document.getElementById('successMessage').classList.remove('d-none');
-
-    // Optionally, you can clear the form:
-    document.getElementById('signupForm').reset();
-
-    // If you want to submit to server after showing success message,
-    // uncomment the next line after a delay:
-    // setTimeout(() => this.submit(), 2000);
 });
-
-const navbar = document.getElementById('navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
-
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-    navbar.classList.remove('bg-transparent', 'navbar-dark');
-    navbar.classList.add('bg-light', 'navbar-light');
-    });
-
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-    navbar.classList.remove('bg-dark', 'navbar-dark');
-    navbar.classList.add('bg-transparent', 'navbar-dark');
-    });
     
 </script>
 
