@@ -84,7 +84,7 @@
   
   
   <!-- Header -->
-  <header class="text-center text-white py-5 pt-7" style="background: url('img/index.jpg') center center / cover fixed;">
+  <header class="text-center text-white py-5 pt-7" style="background: url('img/index2.jpg') center center / cover fixed;">
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
       <h1 class="display-4 fw-bold mb-3 mt-5">Fun Page</h1>
     </div>
@@ -118,19 +118,17 @@
   
   <script>
     // Array of image paths for the rotating gallery
-    const images = [
-      "img/omanimg.jpg",
-      "img/fun-salalah.jpg",
-      "img/fun-Nizwa.jpg",
-      "img/fun-Al Alam Palace.jpg"
-    ];
+    const images = [ "img/omanimg.jpg","img/fun-salalah.jpg",
+                    "img/fun-Nizwa.jpg","img/fun-Al Alam Palace.jpg"];
   
     let currentIndex = 0; // Tracks the current image index
   
     // Automatically change image every 3 seconds
     setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length; // Move to next image
-      document.getElementById("galleryImage").src = images[currentIndex]; // Update image source
+      // Move to next image
+      currentIndex = (currentIndex + 1) % images.length;
+      // Update image source 
+      document.getElementById("galleryImage").src = images[currentIndex]; 
     }, 3000);
   </script>
   
