@@ -109,7 +109,7 @@
   
 
   <script>
-    // Array of city objects containing image paths and correct answers
+    // Array of city objects containing the image paths and correct answers
     const cities = [
         { image: 'img/fun-Al Alam Palace.jpg', correctAnswer: "Muscat" },
         { image: 'img/fun-Nizwa.jpg', correctAnswer: "Nizwa" },
@@ -117,32 +117,32 @@
     ];
   
     // Game state variables
-    let currentAnswerIndex = 0;  // Tracks which city/question we're currently on
-    let score = 0;               // Tracks player's correct answers
-    const imageElement = document.getElementById('city-img');         // City image element
-    const optionsContainer = document.getElementById('options');      // Container for answer buttons
-    const resultElement = document.getElementById('result');          // Displays correct/incorrect feedback
-    const finalResultElement = document.getElementById('final-result'); // Displays final score
+    let currentAnswerIndex = 0;  // Tracks the question number
+    let score = 0;               // Tracks the player correct answers
+    // City image element
+    const imageElement = document.getElementById('city-img'); 
+    // Container for answer buttons        
+    const optionsContainer = document.getElementById('options');  
+    // Displays answer feedback    
+    const resultElement = document.getElementById('result');  
+    // Displays final score        
+    const finalResultElement = document.getElementById('final-result'); 
   
     // Load saved scores from localStorage or initialize empty array
     let gameScores = JSON.parse(localStorage.getItem('gameScores')) || [];
     
-    /**
-     * Displays the current city image
-     */
+    // Displays the city image
     function displayCity() {
         const city = cities[currentAnswerIndex];
         imageElement.src = city.image;  // Set image source
     }
   
-    /**
-     * Creates and displays answer option buttons
-     */
+    // Displays answer option buttons
     function displayOptions() {
         const city = cities[currentAnswerIndex];
-        optionsContainer.innerHTML = '';  // Clear previous options
+        optionsContainer.innerHTML = '';  
         
-        // Create array of options (correct answer + 3 wrong answers) and shuffle
+        // Create array of options (correct answer + 3 wrong answers)
         const shuffledOptions = [city.correctAnswer, 'Suhar', 'Ibra', 'Sur'].sort(() => Math.random() - 0.5);
         
         // Create a button for each option
@@ -156,15 +156,14 @@
         });
     }
   
-    /**
-     * Checks if selected answer is correct and updates game state
-     * @param {string} selectedOption - The answer chosen by the player
-     */
+    //Checks if selected answer is correct and updates game state
+    //@param {string} selectedOption - The answer chosen by the player
     function checkAnswer(selectedOption) {
         const correctAnswer = cities[currentAnswerIndex].correctAnswer;
         
         if (selectedOption === correctAnswer) {
-            score++;  // Increment score for correct answer
+           // Increment score for correct answers
+            score++; 
             resultElement.textContent = "Correct! 🎉";
             resultElement.style.color = "green";
         } else {
@@ -172,31 +171,29 @@
             resultElement.style.color = "red";
         }
         
-        // Move to next question after 2 seconds
-        setTimeout(nextCity, 2000);
+        // Move to next question after 1 seconds
+        setTimeout(nextCity, 1000);
     }
   
-    /**
-     * Advances to the next city/question or ends game if complete
-     */
+    //Move to the next question or ends game if complete
     function nextCity() {
         currentAnswerIndex++;
         
         if (currentAnswerIndex < cities.length) {
-            // More questions remain - display next city
+            // Display next city
             displayCity();
             displayOptions();
-            resultElement.textContent = '';  // Clear previous result
-            updateLevelDisplay();  // Update which level is highlighted
+            resultElement.textContent = '';  
+            // Update which level is highlighted
+            updateLevelDisplay();  
         } else {
-            // No more questions - show final results
+            // No more questions
+            // Show final results
             showFinalResult();
         }
     }
   
-    /**
-     * Updates the visual indication of current level
-     */
+    // Updates the visual indication of current level
     function updateLevelDisplay() {
         // Highlight current level by making it bold
         document.getElementById('level1').style.fontWeight = (currentAnswerIndex === 0) ? 'bolder' : 'normal';
@@ -204,17 +201,13 @@
         document.getElementById('level3').style.fontWeight = (currentAnswerIndex === 2) ? 'bolder' : 'normal';
     }
   
-    /**
-     * Saves scores array to localStorage
-     */
+    // Saves scores 
     function saveScores() {
       localStorage.setItem('gameScores', JSON.stringify(gameScores));
     }
     
-    /**
-     * Adds a new score to the scores array and maintains top 10
-     * @param {number} score - The player's final score to add
-     */
+    // Adds a new score to the scores array and maintains top 10
+    // @param {number} score - The player's final score to add
     function addScore(score) {
       // Add new score with current timestamp
       gameScores.push({
@@ -222,7 +215,7 @@
         date: new Date().toISOString()
       });
       
-      // Sort scores: first by score (highest first), then by date (newest first)
+      // Sort scores
       gameScores.sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
         return new Date(b.date) - new Date(a.date);
@@ -235,39 +228,36 @@
       updateScoreTable();    // Update the displayed table
     }
     
-    /**
-     * Updates the high scores table in the DOM
-     */
+    // Updates the high scores table 
     function updateScoreTable() {
       const tbody = document.querySelector('#scoreTable tbody');
-      if (!tbody) return;  // Exit if table not found
-      
-      tbody.innerHTML = '';  // Clear existing rows
+      // Exit if table not found
+      if (!tbody) return;  
+      // Clear existing rows
+      tbody.innerHTML = '';  
       
       // Create a table row for each score
       gameScores.forEach(scoreData => {
         const row = document.createElement('tr');
         
-        // Date cell (first column)
+        // Date cell
         const dateCell = document.createElement('td');
         dateCell.className = 'text-center';
         dateCell.textContent = new Date(scoreData.date).toLocaleDateString();
         
-        // Score cell (second column)
+        // Score cell 
         const scoreCell = document.createElement('td');
         scoreCell.className = 'text-center fw-bold';
         scoreCell.textContent = `${scoreData.score}/3`;
         
-        // Add cells to row and row to table
+        // Add the cells to table
         row.appendChild(dateCell);
         row.appendChild(scoreCell);
         tbody.appendChild(row);
       });
     }
   
-    /**
-     * Shows final results when game is complete
-     */
+    // Shows final results when game is complete
     function showFinalResult() {
       // Hide game elements
       imageElement.style.display = 'none';
@@ -286,10 +276,14 @@
     }
   
     // Initialize the game when page loads
-    displayCity();          // Show first city image
-    displayOptions();       // Show answer options
-    updateLevelDisplay();   // Highlight level 1
-    updateScoreTable();     // Load any existing high scores
+    // Show first city image
+    displayCity();  
+    // Show answer options        
+    displayOptions(); 
+    // Highlight level       
+    updateLevelDisplay();
+    // Load any existing high scores   
+    updateScoreTable();     
   </script>
 
   
