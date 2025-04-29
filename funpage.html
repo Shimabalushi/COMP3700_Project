@@ -84,7 +84,7 @@
   
   
   <!-- Header -->
-  <header class="text-center text-white py-5 pt-7" style="background: url('img/index2.jpg') center center / cover fixed;">
+  <header class="text-center text-white py-5 pt-7" style="background: url('img/index.jpg') center center / cover fixed;">
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
       <h1 class="display-4 fw-bold mb-3 mt-5">Fun Page</h1>
     </div>
@@ -93,16 +93,47 @@
   <div class="container text-center my-5">
     <h2>Guess It!</h2>
     <p>Guess the city ⭐🎉</p>
-    <p class="tx1">Let`s do somthing fun !</p>
-
+    <p class="tx1">Let's do something fun!</p>
+  
+    <!-- Auto-rotating Image Gallery -->
+    <div id="imageGallery" class="my-4">
+      <!-- Initial image shown in the gallery -->
+      <img id="galleryImage" src="img/omanimg.jpg" class="img-fluid rounded" alt="Gallery Image" style="max-height: 300px;">
+    </div>
+  
+    <!-- User name input form -->
     <form id="contactForm" class="row g-3">
-    <div class=""col-12"">
-          <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" id="name" required>
-        </div>
-    <button class="btn btn-dark"><a  href="game.html" class="list-group-item list-group-item-action" >Start </a></button>
+      <div class="col-12">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="col-12">
+        <!-- Start button linking to the game page -->
+        <button type="submit" class="btn btn-dark">
+          <a href="game.html" class="text-white text-decoration-none">Start</a>
+        </button>
+      </div>
     </form>
   </div>
+  
+  <script>
+    // Array of image paths for the rotating gallery
+    const images = [
+      "img/omanimg.jpg",
+      "img/fun-salalah.jpg",
+      "img/fun-Nizwa.jpg",
+      "img/fun-Al Alam Palace.jpg"
+    ];
+  
+    let currentIndex = 0; // Tracks the current image index
+  
+    // Automatically change image every 3 seconds
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length; // Move to next image
+      document.getElementById("galleryImage").src = images[currentIndex]; // Update image source
+    }, 3000);
+  </script>
+  
   
 <!-- Footer -->
 <footer class="bg-dark text-light text-center text-lg-start mt-5 pt-5 pb-3">
