@@ -83,7 +83,7 @@
     
     
 <!-- Header -->
-<header class="text-center text-white py-5 pt-7" style="background: url('img/index2.jpg') center center / cover fixed;">
+<header class="text-center text-white py-5 pt-7" style="background: url('img/index.jpg') center center / cover fixed;">
   <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
     <h1 class="display-4 fw-bold mb-3 mt-5">Edit information</h1>
     </div>
@@ -94,7 +94,6 @@
     <div class="card-body">
       <div class="text-center mb-4">
         <img src="img/Profile.jpg" class="rounded-circle img-fluid" style="width: 150px;" alt="Profile Picture">
-        <button class="btn btn-secondary mt-3">Edit Profile Picture</button>
       </div>
 
       <h2 class="h4 mb-4 text-center">Personal Information</h2>
@@ -169,99 +168,114 @@
   </div>
 </div>
 
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('profileForm');
-  
-  // Custom validation functions
-  function validateName(name) {
-    return name.length >= 3 ;
-  }
-  
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  }
-  
-  function validatePhone(phone) {
-    const re = /^[0-9]{8,15}$/;
-    return re.test(phone);
-  }
-  
-  function validateBirthday(date) {
-    const inputDate = new Date(date);
-    const currentDate = new Date();
-    return inputDate < currentDate;
-  }
-  
-  function validatePassword(password) {
-    // Only validate if password is provided (it's optional)
-    if (password === '') return true;
-    return password.length >= 8;
-  }
-  
-  // Add event listeners for real-time validation
-  document.getElementById('username').addEventListener('input', function() {
-    this.classList.toggle('is-invalid', !validateName(this.value));
-  });
-  
-  document.getElementById('email').addEventListener('input', function() {
-    this.classList.toggle('is-invalid', !validateEmail(this.value));
-  });
-  
-  document.getElementById('phone').addEventListener('input', function() {
-    this.classList.toggle('is-invalid', !validatePhone(this.value));
-  });
-  
-  document.getElementById('birthday').addEventListener('change', function() {
-    this.classList.toggle('is-invalid', !validateBirthday(this.value));
-  });
-  
-  document.getElementById('newPassword').addEventListener('input', function() {
-    this.classList.toggle('is-invalid', !validatePassword(this.value));
-  });
-  
-  // Form submission handler
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const birthday = document.getElementById('birthday').value;
-    const gender = document.getElementById('gender').value;
-    const password = document.getElementById('newPassword').value;
-    
-    // Validate all fields
-    const isNameValid = validateName(name);
-    const isEmailValid = validateEmail(email);
-    const isPhoneValid = validatePhone(phone);
-    const isBirthdayValid = validateBirthday(birthday);
-    const isGenderValid = gender !== '';
-    const isPasswordValid = validatePassword(password);
-    
-    // Toggle invalid classes
-    document.getElementById('username').classList.toggle('is-invalid', !isNameValid);
-    document.getElementById('email').classList.toggle('is-invalid', !isEmailValid);
-    document.getElementById('phone').classList.toggle('is-invalid', !isPhoneValid);
-    document.getElementById('birthday').classList.toggle('is-invalid', !isBirthdayValid);
-    document.getElementById('gender').classList.toggle('is-invalid', !isGenderValid);
-    document.getElementById('newPassword').classList.toggle('is-invalid', !isPasswordValid);
-    
-    // If all valid, proceed with form submission
-    if (isNameValid && isEmailValid && isPhoneValid && isBirthdayValid && isGenderValid && isPasswordValid) {
-      // In a real application, you would submit the form here
-      // For demonstration, we'll show the success modal
-      const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-      successModal.show();
-      
-      // In a real implementation, you might want to submit the form after validation:
-      // form.submit();
+  // Wait for the DOM to be fully loaded before executing the script
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the profile form element
+    const form = document.getElementById('profileForm');
+    // Custom validation functions
+    // Validate name mor than 3 characters 
+    function validateName(name) {
+      return name.length >= 3;
     }
+    
+    // Validate email 
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+    
+    // Validate phone number 8-15 digits 
+    function validatePhone(phone) {
+      const re = /^[0-9]{8,15}$/;
+      return re.test(phone);
+    }
+    
+    // Validate birthday
+    function validateBirthday(date) {
+      const inputDate = new Date(date);
+      const currentDate = new Date();
+      return inputDate < currentDate;
+    }
+    
+    // Validate password at least 8 characters
+    function validatePassword(password) {
+      // Only validate if password is provided 
+      if (password === '') return true;
+      return password.length >= 8;
+    }
+    
+    // Name field validation on input
+    document.getElementById('username').addEventListener('input', function() {
+      // Toggle 'is-invalid' class based on validation result
+      this.classList.toggle('is-invalid', !validateName(this.value));
+    });
+    
+    // Email field validation on input
+    document.getElementById('email').addEventListener('input', function() {
+      this.classList.toggle('is-invalid', !validateEmail(this.value));
+    });
+    
+    // Phone field validation on input
+    document.getElementById('phone').addEventListener('input', function() {
+      this.classList.toggle('is-invalid', !validatePhone(this.value));
+    });
+    
+    // Birthday field validation when date is selected
+    document.getElementById('birthday').addEventListener('change', function() {
+      this.classList.toggle('is-invalid', !validateBirthday(this.value));
+    });
+    
+    // Password field validation on input
+    document.getElementById('newPassword').addEventListener('input', function() {
+      this.classList.toggle('is-invalid', !validatePassword(this.value));
+    });
+    
+    // Form submission handler
+    form.addEventListener('submit', function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const birthday = document.getElementById('birthday').value;
+      const gender = document.getElementById('gender').value;
+      const password = document.getElementById('newPassword').value;
+      
+      // Validate all fields
+      const isNameValid = validateName(name);
+      const isEmailValid = validateEmail(email);
+      const isPhoneValid = validatePhone(phone);
+      const isBirthdayValid = validateBirthday(birthday);
+      // Gender must be selected
+      const isGenderValid = gender !== ''; 
+      const isPasswordValid = validatePassword(password);
+      
+      // Toggle invalid classes on all fields based on validation
+      document.getElementById('username').classList.toggle('is-invalid', !isNameValid);
+      document.getElementById('email').classList.toggle('is-invalid', !isEmailValid);
+      document.getElementById('phone').classList.toggle('is-invalid', !isPhoneValid);
+      document.getElementById('birthday').classList.toggle('is-invalid', !isBirthdayValid);
+      document.getElementById('gender').classList.toggle('is-invalid', !isGenderValid);
+      document.getElementById('newPassword').classList.toggle('is-invalid', !isPasswordValid);
+      
+      // Check if all fields are valid
+      if (isNameValid && isEmailValid && isPhoneValid && 
+          isBirthdayValid && isGenderValid && isPasswordValid) {
+        // In a real application, you would submit the form here
+        // For demonstration, we'll show the success modal
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+        
+        // In a real implementation, you might want to submit the form after validation:
+        // form.submit();
+      }
+    });
   });
-});
-</script>
+  </script>
 
 <!-- Footer -->
 <footer class="bg-dark text-light text-center text-lg-start mt-5 pt-5 pb-3">
