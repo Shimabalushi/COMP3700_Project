@@ -101,38 +101,38 @@
       <div class="mb-3">
         <label for="phone-number" class="form-label fw-bold">Phone Number</label>
         <input id="phone-number" class="form-control" type="tel" name="phone-number" placeholder="Enter phone number" required>
-        <div class="invalid-feedback">Please enter a valid phone number</div>
+        <span id="error-phone-number" class="text-danger small"></span>
       </div>
   
       <div class="mb-3">
         <label for="email-address" class="form-label fw-bold">Email Address</label>
         <input id="email-address" class="form-control" type="email" name="email-address" placeholder="Enter email address" required>
-        <div class="invalid-feedback">Please enter a valid email address</div>
+        <span id="error-email-address" class="text-danger small"></span>
       </div>
   
       <div class="mb-3">
         <label for="card-name" class="form-label fw-bold">Card Holder Name</label>
         <input id="card-name" class="form-control" type="text" name="card-name" placeholder="Enter card name" required>
-        <div class="invalid-feedback">Please enter the name on your card</div>
+        <span id="error-card-name" class="text-danger small"></span>
       </div>
   
       <div class="mb-3">
         <label for="card-number" class="form-label fw-bold">Card Number</label>
         <input id="card-number" class="form-control" type="text" name="card-number" placeholder="Enter card number" maxlength="19" required>
-        <div class="invalid-feedback">Please enter a valid card number</div>
+        <span id="error-card-number" class="text-danger small"></span>
       </div>
   
       <div class="row">
         <div class="col-6 mb-3">
           <label for="expiration-date" class="form-label fw-bold">Expiration Date</label>
           <input id="expiration-date" class="form-control" type="text" name="expiration-date" placeholder="MM/YY" maxlength="5" required>
-          <div class="invalid-feedback">Please enter a valid expiration date (MM/YY)</div>
+          <span id="error-expiration-date" class="text-danger small"></span>
         </div>
   
         <div class="col-6 mb-3">
           <label for="cvv" class="form-label fw-bold">CVV</label>
           <input id="cvv" class="form-control" type="password" name="cvv" placeholder="Enter CVV" maxlength="4" required>
-          <div class="invalid-feedback">Please enter a valid CVV</div>
+          <span id="error-cvv" class="text-danger small"></span>
         </div>
       </div>
   
@@ -161,108 +161,123 @@
   </div>
   
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('paymentForm');
-    const cardNumber = document.getElementById('card-number');
-    const expirationDate = document.getElementById('expiration-date');
-    const cvv = document.getElementById('cvv');
-    const phoneNumber = document.getElementById('phone-number');
-    
-    // Format card number with spaces every 4 digits
-    cardNumber.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\s+/g, '');
-      if (value.length > 0) {
-        value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
-      }
-      e.target.value = value;
-    });
-    
-    // Format expiration date as MM/YY
-    expirationDate.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 2) {
-        value = value.substring(0, 2) + '/' + value.substring(2, 4);
-      }
-      e.target.value = value;
-    });
-    
-    // Validation functions
-    function validatePhone(phone) {
-      const re = /^[0-9]{8,15}$/;
-      return re.test(phone);
+  document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('paymentForm');
+  const phoneNumber = document.getElementById('phone-number');
+  const email = document.getElementById('email-address');
+  const cardName = document.getElementById('card-name');
+  const cardNumber = document.getElementById('card-number');
+  const expirationDate = document.getElementById('expiration-date');
+  const cvv = document.getElementById('cvv');
+
+  function setError(id, message) {
+    document.getElementById(id).textContent = message;
+  }
+
+  function clearErrors() {
+    ['error-phone-number', 'error-email-address', 'error-card-name', 'error-card-number', 'error-expiration-date', 'error-cvv']
+      .forEach(id => setError(id, ''));
+  }
+
+  // Format card number
+  cardNumber.addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\s+/g, '');
+    if (value.length > 0) {
+      value = value.match(/.{1,4}/g)?.join(' ') || value;
     }
-    
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
-    
-    function validateCardNumber(number) {
-      const re = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/;
-      return re.test(number);
-    }
-    
-    function validateExpirationDate(date) {
-      const re = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
-      if (!re.test(date)) return false;
-      
-      const [_, month, year] = date.match(re);
-      const currentYear = new Date().getFullYear() % 100;
-      const currentMonth = new Date().getMonth() + 1;
-      
-      if (parseInt(year) < currentYear) return false;
-      if (parseInt(year) === currentYear && parseInt(month) < currentMonth) return false;
-      return true;
-    }
-    
-    function validateCVV(cvv) {
-      const re = /^[0-9]{3,4}$/;
-      return re.test(cvv);
-    }
-    
-    // Form submission handler
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Validate all fields
-      const isPhoneValid = validatePhone(phoneNumber.value);
-      const isEmailValid = validateEmail(document.getElementById('email-address').value);
-      const isCardNameValid = document.getElementById('card-name').value.trim().length > 0;
-      const isCardNumberValid = validateCardNumber(cardNumber.value);
-      const isExpirationValid = validateExpirationDate(expirationDate.value);
-      const isCVVValid = validateCVV(cvv.value);
-      
-      // Toggle invalid classes
-      phoneNumber.classList.toggle('is-invalid', !isPhoneValid);
-      document.getElementById('email-address').classList.toggle('is-invalid', !isEmailValid);
-      document.getElementById('card-name').classList.toggle('is-invalid', !isCardNameValid);
-      cardNumber.classList.toggle('is-invalid', !isCardNumberValid);
-      expirationDate.classList.toggle('is-invalid', !isExpirationValid);
-      cvv.classList.toggle('is-invalid', !isCVVValid);
-      
-      if (isPhoneValid && isEmailValid && isCardNameValid && isCardNumberValid && isExpirationValid && isCVVValid) {
-        // Show confirmation modal with payment summary
-        const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-        
-        // Create payment summary
-        const summary = `
-          <p><strong>Card:</strong> **** **** **** ${cardNumber.value.slice(-4)}</p>
-          <p><strong>Amount:</strong> $${/* You would insert the actual amount here */ '150.480 '}</p>
-          <p><strong>Email:</strong> ${document.getElementById('email-address').value}</p>
-        `;
-        
-        document.getElementById('paymentSummary').innerHTML = summary;
-        modal.show();
-      }
-    });
-    
-    // Confirm payment button handler
-    document.getElementById('confirmPayment').addEventListener('click', function() {
-      // In a real application, you would process the payment here
-      // For this demo, we'll just submit the form
-      form.submit();
-    });
+    e.target.value = value;
   });
+
+  expirationDate.addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+  });
+
+  function validatePhone(phone) {
+    return /^[0-9]{8,15}$/.test(phone);
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateCardNumber(number) {
+    return /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/.test(number);
+  }
+
+  function validateExpirationDate(date) {
+    const re = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+    if (!re.test(date)) return false;
+
+    const [_, month, year] = date.match(re);
+    const currentYear = new Date().getFullYear() % 100;
+    const currentMonth = new Date().getMonth() + 1;
+
+    return parseInt(year) > currentYear || (parseInt(year) === currentYear && parseInt(month) >= currentMonth);
+  }
+
+  function validateCVV(value) {
+    return /^[0-9]{3,4}$/.test(value);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearErrors();
+
+    let isValid = true;
+
+    if (!validatePhone(phoneNumber.value)) {
+      setError('error-phone-number', 'Please enter a valid phone number (8–15 digits).');
+      isValid = false;
+    }
+
+    if (!validateEmail(email.value)) {
+      setError('error-email-address', 'Please enter a valid email address.');
+      isValid = false;
+    }
+
+    if (!cardName.value.trim()) {
+      setError('error-card-name', 'Please enter the name on your card.');
+      isValid = false;
+    }
+
+    if (!validateCardNumber(cardNumber.value)) {
+      setError('error-card-number', 'Card number must be 16 digits grouped in 4s.');
+      isValid = false;
+    }
+
+    if (!validateExpirationDate(expirationDate.value)) {
+      setError('error-expiration-date', 'Expiration date must be valid and not expired.');
+      isValid = false;
+    }
+
+    if (!validateCVV(cvv.value)) {
+      setError('error-cvv', 'CVV must be 3 or 4 digits.');
+      isValid = false;
+    }
+
+    if (isValid) {
+      const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+
+      const summary = `
+        <p><strong>Card:</strong> **** **** **** ${cardNumber.value.slice(-4)}</p>
+        <p><strong>Amount:</strong> $150.48</p>
+        <p><strong>Email:</strong> ${email.value}</p>
+      `;
+
+      document.getElementById('paymentSummary').innerHTML = summary;
+      modal.show();
+    }
+  });
+
+  document.getElementById('confirmPayment').addEventListener('click', function () {
+    form.submit(); // Submit form if needed
+  });
+});
+
   </script>
 
  <!-- Footer -->
