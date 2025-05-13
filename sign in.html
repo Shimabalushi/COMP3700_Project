@@ -88,7 +88,7 @@
   </header>
 
   <!-- Sign-In Form -->
-<div class="container my-5" id="formContainer">
+<div class="container my-5" id="formContainer" action="signIn.php" method="post">
     <div class="card mx-auto shadow p-4" style="max-width: 450px;">
       <h2 class="text-center fw-bold mb-4">Sign In</h2>
   
@@ -302,7 +302,7 @@ function validateForm() {
   document.getElementById("formContainer").style.display = "none"; // Hide the sign-in form
   document.getElementById("successMessage").classList.remove("d-none"); // Show success message
 
-  return false; // Prevent actual form submission
+  this.submit(); 
 }
 
     

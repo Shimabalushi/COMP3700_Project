@@ -95,7 +95,7 @@
   <!-- Messages -->
   <div id="messages"></div>
 
-  <form id="signupForm" class="p-4 border rounded bg-light">
+  <form id="signupForm" class="p-4 border rounded bg-light" action="signUp.php" method="post">
     <!-- User Type and Gender -->
     <div class="row mb-3">
       <div class="col-md-6">
@@ -373,7 +373,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         messages.innerHTML = `<div class="alert alert-danger">${errors.join('<br>')}</div>`;
     } else {
         messages.innerHTML = `<div class="alert alert-success">🎉 Your account has been created successfully!</div>`;
-        this.reset();
+        this.submit();
     }
 });
     
