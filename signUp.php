@@ -13,14 +13,14 @@ if ($conn->connect_error) {
 }
 
 // Collect and sanitize form data
-$userType = $_POST['userType'];
-$gender = $_POST['gender'];
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$username = $_POST['username'];
-$birthday = $_POST['birthday'];
-$email = $_POST['email'];
-$phone = $_POST['phoneNumber'];
+$userType = htmlspecialchars($_POST['userType']);
+$gender = htmlspecialchars($_POST['gender']);
+$firstName = htmlspecialchars($_POST['firstName']);
+$lastName = htmlspecialchars($_POST['lastName']);
+$username = htmlspecialchars($_POST['username']);
+$birthday = htmlspecialchars($_POST['birthday']);
+$email = htmlspecialchars(strtolower(trim($_POST['email'])));
+$phone = htmlspecialchars($_POST['phoneNumber']);
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
 
@@ -29,11 +29,16 @@ if ($password !== $confirmPassword) {
   die("<p>Passwords do not match.</p>");
 }
 
+// Validate password strength (example: at least 8 characters, 1 letter, 1 number)
+if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/", $password)) {
+  die("<p>Password must be at least 8 characters long and contain at least one letter and one number.</p>");
+}
+
 // Hash the password
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // Prepare SQL
-$sql = "INSERT INTO users (user_type, gender, first_name, last_name, username, birthday, email, phone_number, password)
+$sql = "INSERT INTO signUp (user_type, gender, first_name, last_name, username, birthday, email, phone_number, password)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssssssss", $userType, $gender, $firstName, $lastName, $username, $birthday, $email, $phone, $hashedPassword);
@@ -43,38 +48,12 @@ if (!$stmt->execute()) {
   die("<p>Error: " . htmlspecialchars($stmt->error) . "</p>");
 }
 
-// Show success XHTML
-header("Content-Type: application/xhtml+xml");
-echo '<?xml version="1.0" encoding="UTF-8"?>';
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title>Signup Success</title>
-  <style>
-    table { border-collapse: collapse; width: 70%; margin: 20px auto; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f2f2f2; }
-  </style>
-</head>
-<body>
-  <h2 style="text-align: center;">Signup Successful</h2>
-  <table>
-    <tr><th>User Type</th><td><?php echo htmlspecialchars($userType); ?></td></tr>
-    <tr><th>Gender</th><td><?php echo htmlspecialchars($gender); ?></td></tr>
-    <tr><th>First Name</th><td><?php echo htmlspecialchars($firstName); ?></td></tr>
-    <tr><th>Last Name</th><td><?php echo htmlspecialchars($lastName); ?></td></tr>
-    <tr><th>Username</th><td><?php echo htmlspecialchars($username); ?></td></tr>
-    <tr><th>Birthday</th><td><?php echo htmlspecialchars($birthday); ?></td></tr>
-    <tr><th>Email</th><td><?php echo htmlspecialchars($email); ?></td></tr>
-    <tr><th>Phone Number</th><td><?php echo htmlspecialchars($phone); ?></td></tr>
-  </table>
-</body>
-</html>
-
-<?php
+// Close the statement and connection
 $stmt->close();
 $conn->close();
+
+header("Location: sign in.html");
+exit();
+
+
 ?>

@@ -1,6 +1,4 @@
 <?php
-// signIn.php
-
 // Database connection
 $host = "localhost";
 $user = "root";
@@ -8,28 +6,33 @@ $pass = "";
 $dbname = "activities";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
   die("<p>Connection failed: " . $conn->connect_error . "</p>");
 }
 
-$email = $_POST['email'];
+$email = strtolower(trim($_POST['email']));
 $password = $_POST['pass'];
 
-// Query the database for user
-$sql = "SELECT full_name, email FROM users WHERE email = ? AND password = ?";
+// Query only by email first, concatenating first_name and last_name as full_name
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, password FROM signUp WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $email, $password);
+
+// Check if the statement was prepared successfully
+if ($stmt === false) {
+    // Output the error message if the query preparation failed
+    die("Error preparing the SQL statement: " . $conn->error);
+}
+
+$stmt->bind_param("s", $email); // Bind the email parameter to the query
 $stmt->execute();
 $result = $stmt->get_result();
 
-header("Content-Type: application/xhtml+xml");
-echo '<?xml version="1.0" encoding="UTF-8"?>';
+// Set header for HTML content
+header("Content-Type: text/html; charset=UTF-8");
+
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>Sign In Result</title>
@@ -38,20 +41,26 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
   <h2>Sign In Result</h2>
 
   <?php if ($result->num_rows > 0): ?>
-    <table border="1" cellpadding="10">
-      <tr>
-        <th>Full Name</th>
-        <th>Email</th>
-      </tr>
-      <?php while($row = $result->fetch_assoc()): ?>
+    <?php 
+    $row = $result->fetch_assoc();
+    // Verify password
+    if (password_verify($password, $row["password"])): 
+    ?>
+      <table border="1" cellpadding="10">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+        </tr>
         <tr>
           <td><?php echo htmlspecialchars($row["full_name"]); ?></td>
           <td><?php echo htmlspecialchars($row["email"]); ?></td>
         </tr>
-      <?php endwhile; ?>
-    </table>
+      </table>
+    <?php else: ?>
+      <p>Incorrect password. Please try again.</p>
+    <?php endif; ?>
   <?php else: ?>
-    <p>No matching user found. Please check your credentials.</p>
+    <p>No user found with that email.</p>
   <?php endif; ?>
 
 </body>

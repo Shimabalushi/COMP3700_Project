@@ -88,14 +88,14 @@
   </header>
 
   <!-- Sign-In Form -->
-<div class="container my-5" id="formContainer" action="signIn.php" method="post">
+<div class="container my-5" id="formContainer">
     <div class="card mx-auto shadow p-4" style="max-width: 450px;">
       <h2 class="text-center fw-bold mb-4">Sign In</h2>
   
       <!-- Error Message will appear here -->
       <div id="errorMessage" class="alert alert-danger d-none"></div>
   
-      <form method="get" action="https://httpbin.org/get" id="signInForm" onsubmit="return validateForm()">
+      <form method="post" action="signIn.php" id="signInForm" onsubmit="return validateForm()">
         <div class="mb-3">
           <input type="email" class="form-control" id="email" placeholder="EMAIL*" name="email" required>
         </div>

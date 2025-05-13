@@ -86,3 +86,15 @@ CREATE TABLE payments (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE signUp (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_type ENUM('customer', 'businessOwner') NOT NULL,
+  gender ENUM('male', 'female') NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  birthday DATE NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  password VARCHAR(255) NOT NULL -- store hashed password
+);
