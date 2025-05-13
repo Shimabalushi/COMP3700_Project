@@ -279,8 +279,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     updateMessagesTable(); // Update table with new message
     showSuccess("Your message has been sent successfully! 🎉");
 
-    // Optional: reset form after success
-    this.reset();
+    this.submit();
+
   }
 });
 
