@@ -89,7 +89,7 @@
 </header>
 
 <!-- Questionnaire Form -->
-<form id="feedbackForm" class="form-group my-5 container" novalidate>
+<form action="questionair.php" method="post" id="feedbackForm" class="form-group my-5 container" novalidate>
     <h2 class="text-center mb-4">We Value Your Feedback to Enhance Your Experience in Oman!</h2>
 
     <!-- Phone Number -->
@@ -293,7 +293,7 @@ function showError(message) {
         if (validateFeedbackForm()) {
             document.getElementById('feedbackSuccess').innerText = "Thank you for your valuable feedback! 🎉";
             document.getElementById('feedbackSuccess').classList.remove('d-none');
-            this.reset();
+            this.submit();
         }
     });
 

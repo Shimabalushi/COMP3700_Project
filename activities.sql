@@ -52,3 +52,15 @@ CREATE TABLE contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE feedback (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  phone VARCHAR(20),
+  email VARCHAR(100),
+  password VARCHAR(255),
+  gender VARCHAR(10),
+  feedback1 TEXT,
+  feedback2 TEXT,
+  rate INT,
+  subscribe BOOLEAN,
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
