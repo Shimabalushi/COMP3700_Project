@@ -90,22 +90,22 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <p class="text-center">Have questions? Fill out the form below and we'll get back to you.</p>
-      <form id="contactForm" class="row g-3">
+      <form action="user_form.php" method="post" id="contactForm" class="row g-3">
         <div class="col-md-6">
           <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" id="name" required>
+          <input name="name" type="text" class="form-control" id="name" required>
         </div>
         <div class="col-md-6">
           <label for="email" class="form-label">Your Email</label>
-          <input type="email" class="form-control" id="email" required>
+          <input name="email" type="email" class="form-control" id="email" required>
         </div>
         <div class="col-12">
           <label for="subject" class="form-label">Subject</label>
-          <input type="text" class="form-control" id="subject" required>
+          <input name="subject" type="text" class="form-control" id="subject" required>
         </div>
         <div class="col-12">
           <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" rows="4" required></textarea>
+          <textarea name="message"  class="form-control" id="message" rows="4" required></textarea>
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-primary w-100">Send Message</button>
@@ -263,9 +263,8 @@ function showSuccess(message) {
   alertDiv.classList.remove('d-none'); // Show alert
 }
 
-// Handle form submission event
 document.getElementById('contactForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form default submission
+  event.preventDefault(); // Prevent page reload
 
   // Get form values
   const name = document.getElementById('name').value.trim();
@@ -278,10 +277,13 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const newMessage = new ContactMessage(name, email, subject, message);
     contactMessages.push(newMessage); // Save the message
     updateMessagesTable(); // Update table with new message
-    this.reset(); // Reset form fields
     showSuccess("Your message has been sent successfully! 🎉");
+
+    // Optional: reset form after success
+    this.reset();
   }
 });
+
 
 // Footer content arrays
 var logoSrc = "img/logo1.png"; // Logo image

@@ -1,4 +1,5 @@
 CREATE DATABASE activities;
+USE activities;
 
 CREATE TABLE company (
     companyID INT PRIMARY KEY,
@@ -41,3 +42,13 @@ INSERT INTO activityInfo (activityID, companyID, activityDescription, activityIM
 (3, 1, "Privet tour for 5-8", "img/Jabal-Hiking-Day.jpeg"),
 (5, 4, "Privet Group", "img/Explore and challenge-RosesTrail.jpg"),
 (4, 3, "Public Tour", "img/HIking Adventures-Surfing.png");
+
+CREATE TABLE contact_messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    subject VARCHAR(150) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
