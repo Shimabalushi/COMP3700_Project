@@ -97,7 +97,7 @@
     </p>
   
     <!-- Payment Form -->
-    <form id="paymentForm" class="needs-validation mt-4 p-4 bg-white rounded shadow" style="max-width: 500px; margin: auto;" method="post" action="Confirmation.html" novalidate>
+    <form id="paymentForm" class="needs-validation mt-4 p-4 bg-white rounded shadow" style="max-width: 500px; margin: auto;" method="post" action="confirmation.php" novalidate>
       <div class="mb-3">
         <label for="phone-number" class="form-label fw-bold">Phone Number</label>
         <input id="phone-number" class="form-control" type="tel" name="phone-number" placeholder="Enter phone number" required>
@@ -220,7 +220,7 @@
   }
 
   function validateCVV(value) {
-    return /^[0-9]{3,4}$/.test(value);
+    return /^[0-9]{3}$/.test(value);
   }
 
   form.addEventListener('submit', function (e) {

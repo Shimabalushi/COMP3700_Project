@@ -64,3 +64,25 @@ CREATE TABLE feedback (
   subscribe BOOLEAN,
   submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE users (
+  username VARCHAR(50) PRIMARY KEY,
+  email VARCHAR(100),
+  phone VARCHAR(20),
+  birthday DATE,
+  gender VARCHAR(10),
+  password VARCHAR(255),
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE payments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    phone_number VARCHAR(20) NOT NULL,
+    email_address VARCHAR(100) NOT NULL,
+    card_name VARCHAR(100) NOT NULL,
+    card_number VARCHAR(20) NOT NULL,
+    expiration_date VARCHAR(5) NOT NULL,
+    cvv VARCHAR(4) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
