@@ -102,35 +102,37 @@
       </div>
 
       <h2 class="h4 mb-4 text-center">Personal Information</h2>
-      <form id="profileForm" method = "post"  action = "update_profile.php">
+      <form id="profileForm" method = "post"  action = "signUp.php">
         <div class = "mb-3 mt-3">
             <label for = "text">Enter your old E-mail:</label>
-            <input type = "text" class = "form-control" placeholder="Your old email" id ="oldEmail" required>
+            <input type="email" class="form-control" placeholder="Your old email" id="oldEmail" name="oldEmail" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
 
         </div>
         <div class = "mb-3 mt-3">
             <label for = "text">New Name:</label>
-            <input type = "text" class = "form-control" placeholder="Your name" id ="username" required>
+            <input type="text" class="form-control" placeholder="Your name" id="username" name="username" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
 
         </div>
         <div class = "mb-3 mt-3">
             <label for = "text">New Email:</label>
-            <input type = "text" class = "form-control" placeholder="Email@example.com" id ="email" required>
+            <input type="email" class="form-control" placeholder="Email@example.com" id="email" name="email" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class = "mb-3 mt-3">
             <label for = "text">New Password</label>
-            <input type = "password" class = "form-control" placeholder="Your new password" id ="newPassword" required>
+            <input name="newPassword" type = "password" class = "form-control" placeholder="Your new password" id ="newPassword" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
-        <div class = "mb-3 mt-3 container">
-        <button type ="submit" class = "btn primary-button" style = "color:white;">Change</button>
+        <div class="text-center mt-3">
+  <button type="submit" class="btn btn-primary px-4">Change</button>
+</div>
+
     </form>
     </div>
   </div>

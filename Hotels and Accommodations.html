@@ -225,7 +225,7 @@
     </div>
   </div>
 
-  <form method="POST" action="add_hotel.php" class="needs-validation" novalidate>
+  <form method="POST" action="add_hotel.php" enctype="multipart/form-data"  class="needs-validation" novalidate>
   <div class="container mt-5">
     <h2 class="text-center mb-4">Add a New Hotel</h2>
 
@@ -445,25 +445,23 @@ generateFooterContent();
 
 // Form validation
 (function () {
-  'use strict'
+  'use strict';
+
   // Fetch all the forms we want to apply validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+  var forms = document.querySelectorAll('.needs-validation');
 
   // Loop over them and prevent submission if invalid
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault() // Prevent submission if the form is invalid
-          event.stopPropagation() // Stop further propagation of the event
-        } else {
-          // If the form is valid, allow the submission
-          this.submit(); // Submit the form programmatically
-        }
-        form.classList.add('was-validated') // Add validation feedback class
-      }, false)
-    })
-})()
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault(); // Prevent submission if the form is invalid
+        event.stopPropagation(); // Stop further propagation of the event
+      }
+      // Add validation feedback class either way
+      form.classList.add('was-validated');
+    }, false);
+  });
+})();
 
 
 </script>

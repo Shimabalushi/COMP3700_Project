@@ -65,15 +65,6 @@ CREATE TABLE feedback (
   submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE users (
-  username VARCHAR(50) PRIMARY KEY,
-  email VARCHAR(100),
-  phone VARCHAR(20),
-  birthday DATE,
-  gender VARCHAR(10),
-  password VARCHAR(255),
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
 
 CREATE TABLE payments (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,3 +89,14 @@ CREATE TABLE signUp (
   phone_number VARCHAR(20) NOT NULL,
   password VARCHAR(255) NOT NULL -- store hashed password
 );
+
+CREATE TABLE hotels (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    rating TINYINT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
