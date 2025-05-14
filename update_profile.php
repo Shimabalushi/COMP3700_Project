@@ -6,51 +6,47 @@ if ($conn->connect_error) {
 }
 
 // 2. Collect and sanitize POST data
-$username = htmlspecialchars($_POST['Username']);
-$email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-$phone = htmlspecialchars($_POST['Phone-number']);
-$birthday = $_POST['Birthday']; // format yyyy-mm-dd
-$gender = htmlspecialchars($_POST['gender']);
-$newPassword = $_POST['newPassword'];
+$oldEmail = filter_var($_POST['oldEmail'], FILTER_SANITIZE_EMAIL);
+$username = htmlspecialchars($_POST['username']);
+$newEmail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$newPassword = $_POST['newPassword'] ?? null;
 
-// 3. Hash password only if provided
-$hashedPassword = !empty($newPassword) ? password_hash($newPassword, PASSWORD_DEFAULT) : null;
-
-// 4. Insert or Update User
-$sql = "INSERT INTO users (username, email, phone, birthday, gender" . ($hashedPassword ? ", password" : "") . ")
-        VALUES (?, ?, ?, ?, ?" . ($hashedPassword ? ", ?" : "") . ")
-        ON DUPLICATE KEY UPDATE 
-        email = VALUES(email), 
-        phone = VALUES(phone),
-        birthday = VALUES(birthday),
-        gender = VALUES(gender)"
-        . ($hashedPassword ? ", password = VALUES(password)" : "");
-
-$stmt = $conn->prepare($sql);
-
-if ($hashedPassword) {
-    $stmt->bind_param("ssssss", $username, $email, $phone, $birthday, $gender, $hashedPassword);
-} else {
-    $stmt->bind_param("sssss", $username, $email, $phone, $birthday, $gender);
+// 3. Validate required fields
+if (empty($oldEmail) || empty($username) || empty($newEmail)) {
+    die("Error: Required fields are missing.");
 }
 
-echo '<!DOCTYPE html><html><head><title>Profile Updated</title></head><body>';
+// 4. First verify the old email exists
+$checkStmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+$checkStmt->bind_param("s", $oldEmail);
+$checkStmt->execute();
+$result = $checkStmt->get_result();
 
-if ($stmt->execute()) {
-    echo "<h2>Profile updated successfully! ✅</h2>";
-    echo "<table border='1' cellpadding='10'>
-            <tr><th>Username</th><td>$username</td></tr>
-            <tr><th>Email</th><td>$email</td></tr>
-            <tr><th>Phone</th><td>$phone</td></tr>
-            <tr><th>Birthday</th><td>$birthday</td></tr>
-            <tr><th>Gender</th><td>$gender</td></tr>
-            <tr><th>Password Updated</th><td>" . ($hashedPassword ? 'Yes' : 'No') . "</td></tr>
-          </table>";
+if ($result->num_rows === 0) {
+    header("Location: profile.php?error=email_not_found");
+    exit();
+}
+$checkStmt->close();
+
+// 5. Prepare update query
+if (!empty($newPassword)) {
+    $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    $updateStmt = $conn->prepare("UPDATE users SET username = ?, email = ?, password = ? WHERE email = ?");
+    $updateStmt->bind_param("ssss", $username, $newEmail, $hashedPassword, $oldEmail);
 } else {
-    echo "<p>Error: " . $stmt->error . "</p>";
+    $updateStmt = $conn->prepare("UPDATE users SET username = ?, email = ? WHERE email = ?");
+    $updateStmt->bind_param("sss", $username, $newEmail, $oldEmail);
 }
 
-echo '</body></html>';
-$stmt->close();
+// 6. Execute the update
+if ($updateStmt->execute()) {
+    header("Location: profile.php?success=1");
+    exit();
+} else {
+    header("Location: profile.php?error=update_failed");
+    exit();
+}
+
+$updateStmt->close();
 $conn->close();
 ?>
