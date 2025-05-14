@@ -26,11 +26,6 @@
             <a class="nav-link active" href="index.html">Home</a>
           </li>
   
-            <!-- Search -->
-      <li class="nav-item">
-        <a class="nav-link" href="search.php">Search Activities</a>
-      </li>
-      
           <!-- Explore Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -224,6 +219,67 @@
   
     </div>
   </div>
+
+  <form method="POST" action="add_hotel.php" class="needs-validation" novalidate>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Add a New Hotel</h2>
+
+    <!-- Hotel Name -->
+    <div class="mb-3">
+      <label for="hotelName" class="form-label">Hotel Name:</label>
+      <input type="text" class="form-control" id="hotelName" name="hotelName" placeholder="Enter hotel name" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <!-- Hotel Location -->
+    <div class="mb-3">
+      <label for="hotelLocation" class="form-label">Hotel Location:</label>
+      <input type="text" class="form-control" id="hotelLocation" name="hotelLocation" placeholder="Enter location" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <!-- Hotel Description -->
+    <div class="mb-3">
+      <label for="hotelDescription" class="form-label">Hotel Description:</label>
+      <textarea class="form-control" id="hotelDescription" name="hotelDescription" rows="4" placeholder="Describe the hotel" required></textarea>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <!-- Hotel Rating -->
+    <div class="mb-3">
+      <label for="hotelRating" class="form-label">Hotel Rating (1 to 5):</label>
+      <input type="number" class="form-control" id="hotelRating" name="hotelRating" min="1" max="5" placeholder="Rate the hotel" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <!-- Hotel Image -->
+    <div class="mb-3">
+      <label for="hotelImage" class="form-label">Hotel Image:</label>
+      <input class="form-control" type="file" id="hotelImage" name="hotelImage" accept="image/*" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please upload an image.</div>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="mb-3">
+      <label class="form-check-label form-switch">
+        <input class="form-check-input" type="checkbox" name="agree" required> I agree to the terms and conditions.
+      </label>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please agree to the terms.</div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Add Hotel</button>
+    </div>
+  </div>
+</form>
+
   
 
 <!-- Footer -->
@@ -381,6 +437,29 @@ function searchFooter() {
 
 // Call the footer generation on page load
 generateFooterContent();
+
+// Form validation
+(function () {
+  'use strict'
+  // Fetch all the forms we want to apply validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission if invalid
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault() // Prevent submission if the form is invalid
+          event.stopPropagation() // Stop further propagation of the event
+        } else {
+          // If the form is valid, allow the submission
+          this.submit(); // Submit the form programmatically
+        }
+        form.classList.add('was-validated') // Add validation feedback class
+      }, false)
+    })
+})()
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
